@@ -3,342 +3,318 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#07111f">
+<meta name="theme-color" content="#060e1f">
 <title>BBA Teknoloji</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{--gold:#C9A84C;--gold2:#F0D878;--navy:#060e1f;}
+html,body{min-height:100vh;background:var(--navy);font-family:'Inter',sans-serif;color:#fff;overscroll-behavior:none;}
 
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+/* ── CANVAS BG ── */
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
 
-:root {
-  --gold: #C9A84C;
-  --gold2: #F0D878;
-  --navy: #07111f;
-  --navy2: #0d1b2e;
-}
+/* ── LAYOUT ── */
+.wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding-bottom:48px;}
 
-html, body {
-  min-height: 100vh;
-  background: var(--navy);
-  font-family: 'Inter', sans-serif;
-  color: #fff;
-  overscroll-behavior: none;
-}
+/* ── TOP BAR ── */
+.topbar{width:100%;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));flex-shrink:0;}
 
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 0 40px;
-  background:
-    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(201,168,76,0.07) 0%, transparent 70%),
-    linear-gradient(180deg, #060e1f 0%, #0d1b2e 100%);
-}
+/* ── HERO ── */
+.hero{width:100%;max-width:480px;padding:44px 24px 32px;text-align:center;}
+.hero-logo{font-family:'Rajdhani',sans-serif;font-size:56px;font-weight:700;letter-spacing:10px;color:#fff;line-height:1;margin-bottom:6px;opacity:0;animation:fadeUp .7s .1s forwards;}
+.hero-logo em{font-style:normal;color:var(--gold);}
+.hero-tag{font-size:9px;letter-spacing:3.5px;color:#3a5a78;text-transform:uppercase;margin-bottom:18px;opacity:0;animation:fadeUp .7s .25s forwards;}
+.hero-line{width:36px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 18px;opacity:0;animation:fadeUp .7s .35s forwards;}
+.hero-desc{font-size:12.5px;color:#6a8aaa;line-height:1.7;font-weight:300;max-width:300px;margin:0 auto;opacity:0;animation:fadeUp .7s .45s forwards;}
 
-/* Top bar */
-.topbar {
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold));
-  flex-shrink: 0;
-}
+/* ── SHOWCASE (görsel slider) ── */
+.showcase{width:100%;max-width:480px;padding:0 16px;margin-bottom:4px;opacity:0;animation:fadeUp .7s .55s forwards;}
+.showcase-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;}
+.showcase-track::-webkit-scrollbar{display:none;}
+.scard{flex-shrink:0;width:220px;scroll-snap-align:start;border-radius:10px;overflow:hidden;border:1px solid rgba(201,168,76,0.15);position:relative;}
+.scard img{width:100%;height:130px;object-fit:cover;display:block;transition:transform .4s;}
+.scard:active img{transform:scale(1.04);}
+.scard-label{position:absolute;bottom:0;left:0;right:0;padding:6px 10px;background:linear-gradient(transparent,rgba(6,14,31,.9));font-size:9px;letter-spacing:1.5px;color:rgba(201,168,76,.8);text-transform:uppercase;}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:8px;}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(201,168,76,.2);transition:background .3s;}
+.dot.active{background:var(--gold);}
 
-/* Header */
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 36px 24px 28px;
-  text-align: center;
-  width: 100%;
-  max-width: 420px;
-}
+/* ── SECTION LABEL ── */
+.sec{font-size:8.5px;letter-spacing:3px;color:#2a4a68;text-transform:uppercase;width:100%;max-width:480px;padding:0 20px;margin:22px 0 9px;}
 
-.logo {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  letter-spacing: 8px;
-  color: #fff;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.logo em { font-style: normal; color: var(--gold); }
+/* ── LINK CARDS ── */
+.cards{width:100%;max-width:480px;padding:0 16px;display:flex;flex-direction:column;gap:9px;}
+.card{display:flex;align-items:center;gap:13px;padding:15px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.055);border-radius:10px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:transform .15s,border-color .2s,background .2s;}
+.card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold);transition:width .2s;}
+.card:active{transform:scale(0.975);background:rgba(201,168,76,.07);border-color:rgba(201,168,76,.3);}
+.card:active::after{width:3px;}
+.card-ic{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
+.card-tx{flex:1;min-width:0;}
+.card-title{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:2px;}
+.card-sub{font-size:10.5px;color:#4a6a88;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.card-arr{color:#2a4a66;font-size:18px;flex-shrink:0;}
 
-.tagline {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: #4a6a88;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
+/* ── VIDEO GRID ── */
+.vgrid{width:100%;max-width:480px;padding:0 16px;display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.vc{display:flex;flex-direction:column;align-items:center;gap:7px;padding:15px 10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.055);border-radius:10px;text-decoration:none;color:inherit;text-align:center;transition:transform .15s,background .2s;}
+.vc:active{transform:scale(0.96);background:rgba(255,0,0,.07);}
+.vc-ic{width:42px;height:42px;border-radius:50%;background:rgba(255,0,0,.12);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.vc-title{font-size:11.5px;font-weight:600;color:#fff;line-height:1.3;}
+.vc-sub{font-size:9.5px;color:#3a5a78;}
 
-.divider {
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin-bottom: 20px;
-}
+/* ── STATS ROW ── */
+.stats{width:100%;max-width:480px;padding:0 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:4px;}
+.stat{padding:14px 8px;background:rgba(255,255,255,.025);border:1px solid rgba(201,168,76,.08);border-radius:10px;text-align:center;}
+.stat-n{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--gold);line-height:1;}
+.stat-l{font-size:8px;color:#3a5a78;letter-spacing:1px;text-transform:uppercase;margin-top:3px;}
 
-.desc {
-  font-size: 13px;
-  color: #7a9ab8;
-  line-height: 1.7;
-  font-weight: 300;
-  max-width: 320px;
-}
+/* ── FOOTER ── */
+.footer{margin-top:40px;text-align:center;padding:0 24px;}
+.footer-logo{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:4px;color:rgba(201,168,76,.3);}
+.footer-sub{font-size:9.5px;color:#1a2a3a;margin-top:4px;letter-spacing:.5px;}
 
-/* Section label */
-.section-label {
-  font-size: 9px;
-  letter-spacing: 3px;
-  color: #3a5a78;
-  text-transform: uppercase;
-  width: 100%;
-  max-width: 420px;
-  padding: 0 20px;
-  margin: 24px 0 10px;
-}
-
-/* Cards */
-.cards {
-  width: 100%;
-  max-width: 420px;
-  padding: 0 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
-  background: rgba(255,255,255,0.035);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.2s, border-color 0.2s, transform 0.15s;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--gold);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.card:active {
-  background: rgba(201,168,76,0.08);
-  border-color: rgba(201,168,76,0.3);
-  transform: scale(0.98);
-}
-.card:active::before { opacity: 1; }
-
-.card-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 20px;
-}
-
-.icon-yt   { background: rgba(255, 0, 0, 0.12); }
-.icon-hub  { background: rgba(58,143,213,0.12); }
-.icon-li   { background: rgba(10,102,194,0.15); }
-.icon-vtol { background: rgba(201,168,76,0.10); }
-.icon-qc1  { background: rgba(45,212,191,0.10); }
-.icon-strix{ background: rgba(168,85,247,0.12); }
-
-.card-text { flex: 1; min-width: 0; }
-.card-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 3px;
-  letter-spacing: 0.3px;
-}
-.card-sub {
-  font-size: 11px;
-  color: #5a7a9a;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.card-arrow {
-  color: #2a4a66;
-  font-size: 16px;
-  flex-shrink: 0;
-}
-
-/* Video cards — 2 column */
-.video-grid {
-  width: 100%;
-  max-width: 420px;
-  padding: 0 16px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.vcard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 12px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-  text-decoration: none;
-  color: inherit;
-  text-align: center;
-  transition: background 0.2s, transform 0.15s;
-}
-.vcard:active {
-  background: rgba(255,0,0,0.07);
-  transform: scale(0.97);
-}
-.vcard-icon {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: rgba(255,0,0,0.12);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-}
-.vcard-title { font-size: 12px; font-weight: 600; color: #fff; line-height: 1.3; }
-.vcard-sub { font-size: 10px; color: #4a6a88; }
-
-/* Footer */
-.footer {
-  margin-top: 36px;
-  text-align: center;
-  padding: 0 24px;
-}
-.footer-logo {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  color: rgba(201,168,76,0.35);
-}
-.footer-sub {
-  font-size: 10px;
-  color: #2a3a4a;
-  margin-top: 4px;
-  letter-spacing: 1px;
-}
+/* ── ANIMS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
 </style>
 </head>
 <body>
 
+<canvas id="bg"></canvas>
+
+<div class="wrap">
 <div class="topbar"></div>
 
-<div class="header">
-  <div class="logo">BB<em>A</em></div>
-  <div class="tagline">Autonomous Drone Systems</div>
-  <div class="divider"></div>
-  <div class="desc">Yapay zeka destekli insansız hava sistemleri, otonom yazılım platformları ve sürü İHA teknolojileri.</div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-logo">BB<em>A</em></div>
+  <div class="hero-tag">Autonomous Drone Systems · İzmir, Türkiye</div>
+  <div class="hero-line"></div>
+  <div class="hero-desc">Yapay zeka destekli insansız hava sistemleri, otonom yazılım platformları ve sürü İHA teknolojileri.</div>
 </div>
 
-<!-- Platform -->
-<div class="section-label">Platform & Web</div>
-<div class="cards">
+<!-- SHOWCASE -->
+<div class="showcase reveal">
+  <div class="showcase-track" id="track">
+    <div class="scard">
+      <img src="img_gcs_map.png" alt="GCS">
+      <div class="scard-label">GCS · Tesis Tarama</div>
+    </div>
+    <div class="scard">
+      <img src="img_aerial.png" alt="Aerial">
+      <div class="scard-label">Hava Görüntüsü</div>
+    </div>
+    <div class="scard">
+      <img src="img_pursuit.jpg" alt="Pursuit">
+      <div class="scard-label">Takip Modu · Aktif</div>
+    </div>
+  </div>
+  <div class="dots">
+    <div class="dot active" id="d0"></div>
+    <div class="dot" id="d1"></div>
+    <div class="dot" id="d2"></div>
+  </div>
+</div>
 
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stat"><div class="stat-n">200+</div><div class="stat-l">Özellik</div></div>
+  <div class="stat"><div class="stat-n">12</div><div class="stat-l">Görev Tipi</div></div>
+  <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Drone Sürü</div></div>
+</div>
+
+<!-- PLATFORM -->
+<div class="sec reveal">Platform & Web</div>
+<div class="cards reveal">
   <a class="card" href="https://www.bbaflighthub.com" target="_blank">
-    <div class="card-icon icon-hub">🛰️</div>
-    <div class="card-text">
-      <div class="card-title">BBA FlightHub</div>
-      <div class="card-sub">bbaflighthub.com — GCS & Filo Yönetimi</div>
-    </div>
-    <div class="card-arrow">›</div>
+    <div class="card-ic" style="background:rgba(58,143,213,.12);">🛰️</div>
+    <div class="card-tx"><div class="card-title">BBA FlightHub</div><div class="card-sub">GCS · Filo Yönetimi · AI Ko-Pilot</div></div>
+    <div class="card-arr">›</div>
   </a>
-
+  <a class="card" href="https://www.bbaflighthub.com" target="_blank">
+    <div class="card-ic" style="background:rgba(45,212,191,.1);">📊</div>
+    <div class="card-tx"><div class="card-title">Log Analiz Platformu</div><div class="card-sub">ArduPilot & PX4 · AI Uçuş Raporu</div></div>
+    <div class="card-arr">›</div>
+  </a>
   <a class="card" href="https://www.bbavtol.com" target="_blank">
-    <div class="card-icon icon-vtol">✈️</div>
-    <div class="card-text">
-      <div class="card-title">BBA VTOL</div>
-      <div class="card-sub">bbavtol.com — Ürünler & Çözümler</div>
-    </div>
-    <div class="card-arrow">›</div>
+    <div class="card-ic" style="background:rgba(201,168,76,.1);">✈️</div>
+    <div class="card-tx"><div class="card-title">BBA VTOL</div><div class="card-sub">Ürünler · QC1 · STRIX Outdoor</div></div>
+    <div class="card-arr">›</div>
   </a>
-
 </div>
 
-<!-- Video Demos -->
-<div class="section-label">Video Demolar</div>
-<div class="video-grid">
-
-  <a class="vcard" href="https://www.youtube.com/channel/UCr5exULUJLki48668_-fAtw" target="_blank">
-    <div class="vcard-icon">▶</div>
-    <div class="vcard-title">YouTube Kanalı</div>
-    <div class="vcard-sub">BBAVTOL</div>
+<!-- VIDEO -->
+<div class="sec reveal">Demo Videolar</div>
+<div class="vgrid reveal">
+  <a class="vc" href="https://www.youtube.com/@bbavtol4310" target="_blank">
+    <div class="vc-ic">▶</div>
+    <div class="vc-title">YouTube Kanalı</div>
+    <div class="vc-sub">@bbavtol4310</div>
   </a>
-
-  <a class="vcard" href="https://www.youtube.com/watch?v=g2gmUwDkvOY" target="_blank">
-    <div class="vcard-icon">🚁</div>
-    <div class="vcard-title">QC1 Delivery Drone</div>
-    <div class="vcard-sub">Demo Video</div>
+  <a class="vc" href="https://www.youtube.com/watch?v=g2gmUwDkvOY" target="_blank">
+    <div class="vc-ic">🚁</div>
+    <div class="vc-title">QC1 Delivery Drone</div>
+    <div class="vc-sub">Demo Video</div>
   </a>
-
-  <a class="vcard" href="https://www.youtube.com/@bbavtol4310" target="_blank">
-    <div class="vcard-icon">▶</div>
-    <div class="vcard-title">Tüm Videolar</div>
-    <div class="vcard-sub">@bbavtol4310</div>
-  </a>
-
 </div>
 
-<!-- İletişim -->
-<div class="section-label">İletişim</div>
-<div class="cards">
-
+<!-- İLETİŞİM -->
+<div class="sec reveal">İletişim</div>
+<div class="cards reveal">
   <a class="card" href="https://www.linkedin.com/in/serdar-batkan/" target="_blank">
-    <div class="card-icon icon-li">💼</div>
-    <div class="card-text">
-      <div class="card-title">Serdar Batkan</div>
-      <div class="card-sub">LinkedIn — Kurucu & CEO, BBA Teknoloji</div>
-    </div>
-    <div class="card-arrow">›</div>
+    <div class="card-ic" style="background:rgba(10,102,194,.15);">💼</div>
+    <div class="card-tx"><div class="card-title">Serdar Batkan</div><div class="card-sub">LinkedIn · Kurucu & CEO</div></div>
+    <div class="card-arr">›</div>
   </a>
-
   <a class="card" href="mailto:serdarbatkan@bbateknoloji.com">
-    <div class="card-icon" style="background:rgba(201,168,76,0.1);">✉️</div>
-    <div class="card-text">
-      <div class="card-title">E-posta</div>
-      <div class="card-sub">serdarbatkan@bbateknoloji.com</div>
-    </div>
-    <div class="card-arrow">›</div>
+    <div class="card-ic" style="background:rgba(201,168,76,.1);">✉️</div>
+    <div class="card-tx"><div class="card-title">E-posta</div><div class="card-sub">serdarbatkan@bbateknoloji.com</div></div>
+    <div class="card-arr">›</div>
   </a>
-
   <a class="card" href="tel:+905344318734">
-    <div class="card-icon" style="background:rgba(37,211,102,0.1);">📞</div>
-    <div class="card-text">
-      <div class="card-title">Telefon</div>
-      <div class="card-sub">+90 534 431 87 34</div>
-    </div>
-    <div class="card-arrow">›</div>
+    <div class="card-ic" style="background:rgba(37,211,102,.1);">📞</div>
+    <div class="card-tx"><div class="card-title">Telefon</div><div class="card-sub">+90 534 431 87 34</div></div>
+    <div class="card-arr">›</div>
   </a>
-
 </div>
 
-<div class="footer">
+<div class="footer reveal">
   <div class="footer-logo">BBA</div>
-  <div class="footer-sub">İzmir, Türkiye · bbateknoloji.com</div>
+  <div class="footer-sub">İzmir, Türkiye · 2026</div>
+</div>
 </div>
 
+<script>
+/* ── CANVAS ANİMASYON ── */
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let W, H, nodes = [], lines = [];
+
+function resize(){
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const GOLD = 'rgba(201,168,76,';
+const BLUE = 'rgba(58,143,213,';
+
+class Node {
+  constructor(){
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random()-.5) * .25;
+    this.vy = (Math.random()-.5) * .25;
+    this.r = Math.random() * 1.5 + .5;
+    this.color = Math.random() > .5 ? GOLD : BLUE;
+  }
+  update(){
+    this.x += this.vx;
+    this.y += this.vy;
+    if(this.x < 0 || this.x > W) this.vx *= -1;
+    if(this.y < 0 || this.y > H) this.vy *= -1;
+  }
+  draw(){
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+    ctx.fillStyle = this.color + '.5)';
+    ctx.fill();
+  }
+}
+
+/* Uçan drone silüeti */
+class Drone {
+  constructor(){this.reset();}
+  reset(){
+    this.x = -60;
+    this.y = Math.random() * H * .6 + H * .1;
+    this.speed = Math.random() * .4 + .2;
+    this.size = Math.random() * 8 + 6;
+    this.trail = [];
+    this.alpha = Math.random() * .15 + .05;
+  }
+  update(){
+    this.trail.push({x:this.x, y:this.y});
+    if(this.trail.length > 40) this.trail.shift();
+    this.x += this.speed;
+    this.y += Math.sin(this.x * .01) * .3;
+    if(this.x > W + 80) this.reset();
+  }
+  draw(){
+    /* trail */
+    for(let i=0;i<this.trail.length;i++){
+      const a = (i/this.trail.length) * this.alpha * .5;
+      ctx.beginPath();
+      ctx.arc(this.trail[i].x, this.trail[i].y, .8, 0, Math.PI*2);
+      ctx.fillStyle = GOLD + a + ')';
+      ctx.fill();
+    }
+    /* drone silüet */
+    const s = this.size;
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.strokeStyle = GOLD + this.alpha + ')';
+    ctx.lineWidth = .8;
+    /* body */
+    ctx.beginPath(); ctx.arc(0,0,s*.18,0,Math.PI*2); ctx.stroke();
+    /* arms */
+    [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([dx,dy])=>{
+      ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(dx*s*.5,dy*s*.5);
+      ctx.stroke();
+      ctx.beginPath(); ctx.arc(dx*s*.5,dy*s*.5,s*.2,0,Math.PI*2); ctx.stroke();
+    });
+    ctx.restore();
+  }
+}
+
+for(let i=0;i<55;i++) nodes.push(new Node());
+const drones = [new Drone(), new Drone(), new Drone()];
+drones[1].x = W * .3; drones[1].y = H * .5;
+drones[2].x = W * .6; drones[2].y = H * .3;
+
+function animate(){
+  ctx.clearRect(0,0,W,H);
+
+  /* node connections */
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<100){
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.strokeStyle = GOLD+((.06)*(1-d/100))+')';
+        ctx.lineWidth=.4;
+        ctx.stroke();
+      }
+    }
+    nodes[i].update();
+    nodes[i].draw();
+  }
+
+  drones.forEach(d=>{d.update();d.draw();});
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* ── SHOWCASE DOTS ── */
+const track = document.getElementById('track');
+track.addEventListener('scroll',()=>{
+  const i = Math.round(track.scrollLeft / 230);
+  document.querySelectorAll('.dot').forEach((d,idx)=>{
+    d.classList.toggle('active', idx===i);
+  });
+});
+</script>
 </body>
 </html>
-
