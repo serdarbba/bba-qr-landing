@@ -166,6 +166,27 @@ body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-heigh
 .al-warn{border-left:2px solid #ff9800;}
 .al-info{border-left:2px solid #3a8fd4;}
 
+/* SMART VISION GRID */
+.sv-intro{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;}
+.sv-highlight{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:22px;}
+.sv-highlight h3{font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px;}
+.sv-highlight ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.sv-highlight ul li{font-size:12.5px;color:#5a7a98;padding-left:16px;position:relative;line-height:1.5;}
+.sv-highlight ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:11px;top:1px;opacity:.6;}
+.sv-highlight ul li strong{color:#a0c0d8;}
+.sv-cat{margin-bottom:28px;}
+.sv-cat-title{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#3a5a78;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.sv-cat-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.05);}
+.sv-alg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:9px;}
+.sv-alg{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055);border-radius:8px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;transition:border-color .2s;}
+.sv-alg:hover{border-color:rgba(201,168,76,.2);}
+.sv-alg .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+.sv-alg-text strong{display:block;font-size:12px;color:#c0d8ee;font-weight:500;margin-bottom:2px;}
+.sv-alg-text p{font-size:11px;color:#3a5a78;line-height:1.4;}
+.sv-alg.blue .dot{background:#3a8fd4;}
+.sv-alg.green .dot{background:#2dd462;}
+.sv-alg.orange .dot{background:#ff9800;}
+
 /* FLIGHTHUB */
 .fh-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;}
 .fh-mock{background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;}
@@ -638,6 +659,101 @@ body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-heigh
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ═══ SMART VISION ═══ -->
+<div class="section">
+  <div class="wrap">
+    <div class="sec-eyebrow">AI Computer Vision</div>
+    <div class="sec-title">Smart Vision — 30+ Aerial Algorithms</div>
+    <div class="sec-body">Each algorithm is purpose-built for the aerial perspective — the angles, distances, and lighting conditions a drone camera sees. <strong>Live processing on drone video, static cameras, or recorded footage.</strong> Detections trigger alerts, zone rules, and automated actions.</div>
+
+    <div class="sv-intro">
+      <div class="sv-highlight">
+        <h3>How It Works for the Operator</h3>
+        <ul>
+          <li>Define zones and rules once — system monitors <strong>continuously</strong></li>
+          <li>Alerts delivered instantly via dashboard, mobile notification, or API webhook</li>
+          <li>AI daily summary: plain-language briefing of everything detected — <strong>no analyst needed</strong></li>
+          <li>Works on live drone video, existing CCTV feeds, and recorded footage</li>
+          <li>Multiple detection tasks run simultaneously on the same video stream</li>
+        </ul>
+      </div>
+      <div class="sv-highlight">
+        <h3>Zone Policy Engine</h3>
+        <ul>
+          <li>Draw zones on map → set rules: capacity limits, forbidden access, time windows</li>
+          <li><strong>People count exceeds 50 in Zone A → alert + drone re-tasked to monitor</strong></li>
+          <li>Vehicle enters restricted zone after 22:00 → immediate alert + photo evidence</li>
+          <li>Smoke detected in any sector → emergency protocol triggered automatically</li>
+          <li>Coordinates in geographic (lat/lon) or frame-relative format</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECURITY & SURVEILLANCE -->
+    <div class="sv-cat">
+      <div class="sv-cat-title">Security &amp; Surveillance</div>
+      <div class="sv-alg-grid">
+        <div class="sv-alg"><div class="dot"></div><div class="sv-alg-text"><strong>Person Detection</strong><p>Any person in frame, day or night, from any altitude</p></div></div>
+        <div class="sv-alg"><div class="dot"></div><div class="sv-alg-text"><strong>Multi-Person Tracking</strong><p>Persistent IDs across frames, re-ID after occlusion</p></div></div>
+        <div class="sv-alg"><div class="dot"></div><div class="sv-alg-text"><strong>Restricted Zone Intrusion</strong><p>Polygon zone entry detection, real-time perimeter breach</p></div></div>
+        <div class="sv-alg"><div class="dot"></div><div class="sv-alg-text"><strong>Vehicle Detection &amp; Tracking</strong><p>Ground vehicles from aerial view, speed &amp; direction</p></div></div>
+        <div class="sv-alg"><div class="dot"></div><div class="sv-alg-text"><strong>Suspicious Activity</strong><p>Loitering, erratic movement, unauthorized stop detection</p></div></div>
+        <div class="sv-alg"><div class="dot"></div><div class="sv-alg-text"><strong>Crowd Counting &amp; Density</strong><p>People count, density heatmap, zone capacity enforcement</p></div></div>
+        <div class="sv-alg"><div class="dot"></div><div class="sv-alg-text"><strong>Night &amp; Low-Light</strong><p>Image equalization for low-visibility environments</p></div></div>
+        <div class="sv-alg"><div class="dot"></div><div class="sv-alg-text"><strong>Thermal Detection</strong><p>Body heat signatures for night SAR and perimeter security</p></div></div>
+      </div>
+    </div>
+
+    <!-- INFRASTRUCTURE & INDUSTRY -->
+    <div class="sv-cat">
+      <div class="sv-cat-title">Infrastructure &amp; Industry</div>
+      <div class="sv-alg-grid">
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Structural Crack Detection</strong><p>Bridges, towers, rooftops — hairline to critical fractures</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Corrosion Detection</strong><p>Metal surface degradation on towers, pipes, structures</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Blade Crack &amp; Erosion</strong><p>Wind turbine blade damage from close-proximity orbit</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Solar Hot Spot</strong><p>Thermal anomalies on PV panels indicating failure</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Insulator Damage</strong><p>Power line insulator cracks and contamination</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Conductor Sag</strong><p>Power line clearance monitoring, sag detection</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Vegetation Encroachment</strong><p>Trees and growth approaching power lines or pipelines</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Pipeline Leak Detection</strong><p>Visual anomalies indicating leak or ground subsidence</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Construction Progress</strong><p>Stage tracking, before/after comparison, milestone detection</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>PPE Compliance</strong><p>No helmet, no vest violations on construction sites</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Unauthorized Excavation</strong><p>Illegal digging near pipelines or protected infrastructure</p></div></div>
+        <div class="sv-alg blue"><div class="dot"></div><div class="sv-alg-text"><strong>Change Detection</strong><p>Before/after site comparison from satellite or drone</p></div></div>
+      </div>
+    </div>
+
+    <!-- COASTAL & ENVIRONMENT -->
+    <div class="sv-cat">
+      <div class="sv-cat-title">Coastal, Maritime &amp; Environment</div>
+      <div class="sv-alg-grid">
+        <div class="sv-alg green"><div class="dot"></div><div class="sv-alg-text"><strong>Oil Spill Detection</strong><p>Surface discoloration anomalies in water bodies</p></div></div>
+        <div class="sv-alg green"><div class="dot"></div><div class="sv-alg-text"><strong>Boat &amp; Vessel Detection</strong><p>Maritime surveillance, vessel type classification</p></div></div>
+        <div class="sv-alg green"><div class="dot"></div><div class="sv-alg-text"><strong>Illegal Dumping</strong><p>Waste deposits in coastal and protected zones</p></div></div>
+        <div class="sv-alg green"><div class="dot"></div><div class="sv-alg-text"><strong>Water Quality Anomaly</strong><p>Color &amp; turbidity changes indicating contamination</p></div></div>
+        <div class="sv-alg green"><div class="dot"></div><div class="sv-alg-text"><strong>Shoreline Change</strong><p>Erosion monitoring, coastal boundary tracking over time</p></div></div>
+        <div class="sv-alg green"><div class="dot"></div><div class="sv-alg-text"><strong>Fire &amp; Smoke Detection</strong><p>Early wildfire identification from aerial footage</p></div></div>
+        <div class="sv-alg green"><div class="dot"></div><div class="sv-alg-text"><strong>Vegetation Damage</strong><p>Agricultural and forestry health from aerial survey</p></div></div>
+        <div class="sv-alg green"><div class="dot"></div><div class="sv-alg-text"><strong>Litter &amp; Environmental</strong><p>Illegal dumping, environmental compliance enforcement</p></div></div>
+      </div>
+    </div>
+
+    <!-- URBAN & SMART CITY -->
+    <div class="sv-cat">
+      <div class="sv-cat-title">Urban &amp; Smart City</div>
+      <div class="sv-alg-grid">
+        <div class="sv-alg orange"><div class="dot"></div><div class="sv-alg-text"><strong>Parking Occupancy</strong><p>Zone-by-zone utilization stats, real-time availability</p></div></div>
+        <div class="sv-alg orange"><div class="dot"></div><div class="sv-alg-text"><strong>Illegal Structure Detection</strong><p>Unauthorized construction on protected parcels</p></div></div>
+        <div class="sv-alg orange"><div class="dot"></div><div class="sv-alg-text"><strong>Road &amp; Traffic Inspection</strong><p>Surface damage, pavement quality, traffic flow analysis</p></div></div>
+        <div class="sv-alg orange"><div class="dot"></div><div class="sv-alg-text"><strong>Beach Safety Zones</strong><p>Swimming restricted area enforcement, rip current zones</p></div></div>
+        <div class="sv-alg orange"><div class="dot"></div><div class="sv-alg-text"><strong>Event Crowd Management</strong><p>Density, flow direction, bottleneck detection at public events</p></div></div>
+        <div class="sv-alg orange"><div class="dot"></div><div class="sv-alg-text"><strong>Asset Monitoring</strong><p>Equipment and infrastructure status tracking over time</p></div></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
