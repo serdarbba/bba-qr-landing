@@ -166,6 +166,36 @@ body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-heigh
 .al-warn{border-left:2px solid #ff9800;}
 .al-info{border-left:2px solid #3a8fd4;}
 
+/* AI COMPANION */
+.companion-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;}
+.companion-screen{background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;}
+.companion-topbar{background:rgba(255,255,255,.03);padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px;}
+.companion-topbar .dot{width:8px;height:8px;border-radius:50%;}
+.companion-topbar .title{font-size:11px;color:#2a4060;margin-left:4px;flex:1;}
+.companion-body{padding:18px;}
+.chat-line{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;}
+.chat-line.user{flex-direction:row-reverse;}
+.chat-bubble{border-radius:10px;padding:10px 13px;max-width:82%;font-size:12px;line-height:1.55;}
+.chat-bubble.ai{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#8aaac8;}
+.chat-bubble.user-b{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);color:#c0d0a0;text-align:right;}
+.chat-bubble strong{display:block;font-size:11px;margin-bottom:3px;color:var(--gold);}
+.chat-bubble.ai strong{color:#5a9fd4;}
+.chat-action{background:rgba(45,212,100,.07);border:1px solid rgba(45,212,100,.15);border-radius:6px;padding:8px 12px;font-size:11px;color:#4acc7a;margin-top:4px;}
+.chat-action span{color:#2a4a28;margin-right:6px;}
+.companion-feats{display:flex;flex-direction:column;gap:11px;}
+.cf{display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:15px 17px;}
+.cf-icon{font-size:20px;flex-shrink:0;}
+.cf h4{font-size:13px;font-weight:600;color:#fff;margin-bottom:3px;}
+.cf p{font-size:11.5px;color:#3a5a78;line-height:1.55;}
+.cf .badge-row{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;}
+.cf-badge{font-size:9.5px;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:3px;border:1px solid rgba(201,168,76,.2);color:var(--gold);background:rgba(201,168,76,.06);}
+.cf-badge.b{border-color:rgba(58,143,213,.25);color:#5a9fd4;background:rgba(58,143,213,.06);}
+.cf-badge.g{border-color:rgba(45,212,100,.25);color:#4acc7a;background:rgba(45,212,100,.05);}
+.companion-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;}
+.cs-box{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px;text-align:center;}
+.cs-box .v{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:var(--gold);}
+.cs-box .l{font-size:11px;color:#2a4060;margin-top:4px;line-height:1.4;}
+
 /* SMART VISION GRID */
 .sv-intro{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;}
 .sv-highlight{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:22px;}
@@ -233,6 +263,24 @@ body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-heigh
 .trust-card .tc-name{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff;letter-spacing:.3px;}
 .trust-card .tc-sub{font-size:10.5px;color:#2a4060;margin-top:2px;}
 
+/* CUSTOM SOLUTIONS */
+.custom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
+.custom-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055);border-radius:12px;padding:22px 20px;position:relative;overflow:hidden;transition:all .25s;}
+.custom-card:hover{border-color:rgba(201,168,76,.25);transform:translateY(-2px);}
+.custom-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cc,rgba(201,168,76,.5)),transparent);}
+.custom-card .cc-icon{font-size:28px;margin-bottom:12px;}
+.custom-card h3{font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;}
+.custom-card p{font-size:12px;color:#4a6a88;line-height:1.65;margin-bottom:12px;}
+.custom-card .cc-example{background:rgba(255,255,255,.03);border-radius:6px;padding:9px 11px;font-size:11px;color:#5a7a98;line-height:1.5;border-left:2px solid rgba(201,168,76,.3);}
+.custom-card .cc-example strong{color:#9ab0c8;font-size:11.5px;}
+.differentiator{background:linear-gradient(135deg,rgba(201,168,76,.05),rgba(58,143,213,.03));border:1px solid rgba(201,168,76,.12);border-radius:12px;padding:26px 28px;margin-bottom:0;}
+.differentiator h3{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:.5px;margin-bottom:16px;}
+.diff-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.diff-item{display:flex;gap:10px;align-items:flex-start;}
+.diff-item .di-check{color:var(--gold);font-size:14px;flex-shrink:0;margin-top:1px;}
+.diff-item p{font-size:12.5px;color:#5a7a98;line-height:1.5;}
+.diff-item p strong{color:#a0c0d8;}
+
 /* PARTNER */
 .partner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
 .partner-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055);border-radius:12px;padding:22px;position:relative;overflow:hidden;}
@@ -294,6 +342,114 @@ body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-heigh
       <div class="orbit-node" style="bottom:4px;left:50%;margin-left:-14px;animation-delay:.6s;">📡</div>
       <div class="orbit-node" style="left:4px;top:50%;margin-top:-14px;animation-delay:1s;">🤖</div>
       <div class="orbit-node" style="right:4px;top:50%;margin-top:-14px;animation-delay:1.4s;">🔭</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BBA AI COMPANION ═══ -->
+<div class="section">
+  <div class="wrap">
+    <div class="sec-eyebrow">Ground Control Platform</div>
+    <div class="sec-title">BBA AI Companion — The Complete GCS</div>
+    <div class="sec-body">BBA AI Companion is the central ground control platform that everything runs on — swarm coordination, NEXUS mission intelligence, Tactical Awareness Engine, autonomous navigation, and AI vision, all in one interface. <strong>You talk to it in plain language. It controls the drone.</strong></div>
+
+    <div class="companion-layout">
+      <!-- CHAT MOCK -->
+      <div class="companion-screen">
+        <div class="companion-topbar">
+          <div class="dot" style="background:#ff5f57;"></div>
+          <div class="dot" style="background:#ffbd2e;"></div>
+          <div class="dot" style="background:#28ca41;"></div>
+          <span class="title">BBA AI Companion · Mission Active</span>
+          <div class="live" style="font-size:9px;">Connected</div>
+        </div>
+        <div class="companion-body">
+          <div class="chat-line user">
+            <div class="chat-bubble user-b">Take off to 40 meters and patrol the north perimeter. Alert me if you see any vehicles after 22:00.</div>
+          </div>
+          <div class="chat-line">
+            <div class="chat-bubble ai">
+              <strong>AI Companion</strong>
+              Understood. Planning north perimeter route at 40m — 8 waypoints, estimated 12 min loop. Vehicle detection rule active after 22:00.
+              <div class="chat-action"><span>⚡</span>Executing: ARM → TAKEOFF 40m → AUTO MISSION</div>
+            </div>
+          </div>
+          <div class="chat-line user">
+            <div class="chat-bubble user-b">How's the battery looking?</div>
+          </div>
+          <div class="chat-line">
+            <div class="chat-bubble ai">
+              <strong>AI Companion</strong>
+              Battery at 72%, stable. At current consumption you have ~18 min remaining. RTL window opens in 9 min — I'll alert you 2 min before. Wind is 5 m/s NE, return leg will take slightly longer.
+            </div>
+          </div>
+          <div class="chat-line">
+            <div class="chat-bubble ai" style="border-color:rgba(255,152,0,.2);background:rgba(255,152,0,.05);">
+              <strong style="color:#ff9800;">⚠️ TAE Alert</strong>
+              Vehicle detected in restricted zone — north gate, 22:14. Drone re-routing to investigate. Photo evidence saved.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEATURES -->
+      <div class="companion-feats">
+        <div class="cf">
+          <div class="cf-icon">🗣️</div>
+          <div>
+            <h4>Natural Language Control</h4>
+            <p>Type or speak commands in plain English or Turkish. The AI translates intent into precise flight commands, mission routes, and detection rules — instantly.</p>
+            <div class="badge-row"><span class="cf-badge">Gemini 2.5</span><span class="cf-badge b">Mistral 7B Offline</span></div>
+          </div>
+        </div>
+        <div class="cf">
+          <div class="cf-icon">🗺️</div>
+          <div>
+            <h4>Full Mission Planning</h4>
+            <p>Waypoint editor, survey grid generator, lawnmower pattern, geofence enforcement, pre-flight safety checks. Manual draw or AI-generated from a description.</p>
+            <div class="badge-row"><span class="cf-badge b">ArduPilot</span><span class="cf-badge b">PX4</span><span class="cf-badge">MAVLink v2</span></div>
+          </div>
+        </div>
+        <div class="cf">
+          <div class="cf-icon">📡</div>
+          <div>
+            <h4>Multi-Vehicle, Multi-Link</h4>
+            <p>Simultaneous connections to multiple drones over UDP, TCP, or serial. Each vehicle isolated — one dashboard shows everything.</p>
+            <div class="badge-row"><span class="cf-badge g">Up to 10+ drones</span><span class="cf-badge">Simultaneous</span></div>
+          </div>
+        </div>
+        <div class="cf">
+          <div class="cf-icon">🔒</div>
+          <div>
+            <h4>Geofencing &amp; Airspace</h4>
+            <p>Multi-zone inclusion/exclusion areas. Automatic RTL on boundary breach. Airspace validation before mission start. Rules enforced in real-time, not just pre-flight.</p>
+            <div class="badge-row"><span class="cf-badge">Real-time enforcement</span></div>
+          </div>
+        </div>
+        <div class="cf">
+          <div class="cf-icon">📱</div>
+          <div>
+            <h4>Remote Access &amp; Alerts</h4>
+            <p>Secure remote GCS access from any browser. Mobile companion app. Telegram integration for operator alerts when away from the screen.</p>
+            <div class="badge-row"><span class="cf-badge b">WebSocket</span><span class="cf-badge">Telegram Bot</span><span class="cf-badge g">Mobile</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="companion-specs">
+      <div class="cs-box">
+        <div class="v">500ms</div>
+        <div class="l">TAE risk score refresh rate — faster than any human reaction</div>
+      </div>
+      <div class="cs-box">
+        <div class="v">2–4s</div>
+        <div class="l">AI Commander decision loop — assigns roles, responds to threats</div>
+      </div>
+      <div class="cs-box">
+        <div class="v">Offline</div>
+        <div class="l">Mistral 7B runs locally — no internet needed in the field</div>
+      </div>
     </div>
   </div>
 </div>
@@ -833,6 +989,85 @@ body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-heigh
         <div class="tc-flag">🏛️</div>
         <div class="tc-name">İzmir Büyükşehir</div>
         <div class="tc-sub">Belediyesi</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CUSTOM SOLUTIONS ═══ -->
+<div class="section">
+  <div class="wrap">
+    <div class="sec-eyebrow">What Sets Us Apart</div>
+    <div class="sec-title">Custom Solutions — Any Drone, Any Mission</div>
+    <div class="sec-body">Most drone software is built for one platform or one use case. BBA's architecture is different — <strong>hardware-agnostic, protocol-agnostic, mission-agnostic.</strong> If a drone flies and has a communication link, we can build intelligence on top of it. Here's what that looks like in practice.</div>
+
+    <div class="custom-grid">
+      <div class="custom-card" style="--cc:rgba(58,143,213,.5);">
+        <div class="cc-icon">🚁</div>
+        <h3>Fixed-Wing &amp; VTOL</h3>
+        <p>Transition detection, fixed-wing flight phase analysis, VTOL-specific mission profiles. Not just multirotor — full support for complex airframes.</p>
+        <div class="cc-example"><strong>Example:</strong> Custom VTOL transition monitoring with abort logic if transition fails mid-flight.</div>
+      </div>
+      <div class="custom-card" style="--cc:rgba(201,168,76,.5);">
+        <div class="cc-icon">🚢</div>
+        <h3>Maritime &amp; Coastal Drones</h3>
+        <p>Integration with AIS tracking, coastal camera networks, and maritime alert protocols. Custom vessel classification and zone enforcement for port authorities.</p>
+        <div class="cc-example"><strong>Example:</strong> Autonomous oil spill response — drone dispatched automatically when coastal camera detects discoloration.</div>
+      </div>
+      <div class="custom-card" style="--cc:rgba(45,212,100,.5);">
+        <div class="cc-icon">🏭</div>
+        <h3>Industrial Inspection Drones</h3>
+        <p>Custom detection algorithms for your specific asset type. Train on your own defect library. Output formatted for your maintenance system or ERP.</p>
+        <div class="cc-example"><strong>Example:</strong> Wind farm operator — blade inspection report exports directly to SAP maintenance tickets.</div>
+      </div>
+      <div class="custom-card" style="--cc:rgba(255,152,0,.5);">
+        <div class="cc-icon">🔫</div>
+        <h3>Defence &amp; Tactical UAV</h3>
+        <p>Encrypted comms, GPS-denied autonomous operation, swarm coordination with AI threat response. Offline-capable — Mistral 7B runs locally, no cloud dependency.</p>
+        <div class="cc-example"><strong>Example:</strong> 6-drone perimeter swarm — AI Commander assigns roles, responds to intrusions without operator input.</div>
+      </div>
+      <div class="custom-card" style="--cc:rgba(156,39,176,.5);">
+        <div class="cc-icon">🏙️</div>
+        <h3>Smart City Integration</h3>
+        <p>NEXUS connects to existing city camera networks, IoT sensors, and emergency systems. Drone becomes one layer in a unified city operations center.</p>
+        <div class="cc-example"><strong>Example:</strong> İzmir Büyükşehir — drone AI layer integrated with existing coastal camera infrastructure.</div>
+      </div>
+      <div class="custom-card" style="--cc:rgba(233,30,99,.5);">
+        <div class="cc-icon">📦</div>
+        <h3>Logistics &amp; Delivery</h3>
+        <p>Autonomous dock-to-dock missions, GPS-denied warehouse navigation, payload release control, route optimization for last-mile delivery operations.</p>
+        <div class="cc-example"><strong>Example:</strong> Warehouse drone with precision landing at shelf locations — no GPS, vision-only navigation.</div>
+      </div>
+    </div>
+
+    <!-- DIFFERENTIATOR BOX -->
+    <div class="differentiator">
+      <h3>Why Customers Choose BBA Over Off-the-Shelf Solutions</h3>
+      <div class="diff-list">
+        <div class="diff-item">
+          <span class="di-check">→</span>
+          <p><strong>No vendor lock-in.</strong> Works with ArduPilot, PX4, or any MAVLink-speaking autopilot. We don't sell hardware.</p>
+        </div>
+        <div class="diff-item">
+          <span class="di-check">→</span>
+          <p><strong>AI that actually decides.</strong> Not just data display — the system acts. Threat detected → drone re-routed. Battery low → RTL triggered.</p>
+        </div>
+        <div class="diff-item">
+          <span class="di-check">→</span>
+          <p><strong>Offline-capable.</strong> Mistral 7B runs locally. Critical operations work without internet — comms-denied environments included.</p>
+        </div>
+        <div class="diff-item">
+          <span class="di-check">→</span>
+          <p><strong>GPS-denied ready.</strong> Indoor, underground, urban canyon — vision-based autonomous flight where competitors' systems simply stop working.</p>
+        </div>
+        <div class="diff-item">
+          <span class="di-check">→</span>
+          <p><strong>Custom detection models.</strong> Your specific defect, your specific environment. We train algorithms on your data, not generic datasets.</p>
+        </div>
+        <div class="diff-item">
+          <span class="di-check">→</span>
+          <p><strong>Scale from 1 to 10+ drones</strong> with the same software. The AI Commander handles fleet growth without added operators.</p>
+        </div>
       </div>
     </div>
   </div>
