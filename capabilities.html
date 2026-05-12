@@ -6,208 +6,241 @@
 <title>BBA Teknoloji — Drone AI & Autonomous Systems</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --gold:#C9A84C;--gold2:#F0D878;--gold-dim:rgba(201,168,76,.15);
-  --navy:#060e1f;--navy2:#0b1628;--navy3:#0d1e35;
-  --blue:#1a3a5c;--blue2:rgba(58,143,213,.15);
-  --green:#2dd462;--red:#ff4444;--orange:#ff9800;
+  --gold:#C9A84C;--gold2:#F0D878;
+  --navy:#060e1f;--navy2:#0b1628;
+  --green:#2dd462;--red:#ff4444;--orange:#ff9800;--blue:#3a8fd4;
 }
 html{scroll-behavior:smooth;}
 body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden;}
 
-/* ── ANIMATIONS ── */
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
-@keyframes ping{0%{transform:scale(1);opacity:.8;}100%{transform:scale(2.5);opacity:0;}}
-@keyframes drift{0%,100%{transform:translateY(0) translateX(0);}33%{transform:translateY(-12px) translateX(4px);}66%{transform:translateY(6px) translateX(-6px);}}
-@keyframes scanline{0%{top:-20%;}100%{top:120%;}}
-@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.1);}50%{box-shadow:0 0 40px rgba(201,168,76,.3);}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+/* ANIMATIONS */
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.7);}}
+@keyframes ping{0%{transform:scale(1);opacity:.8;}100%{transform:scale(2.8);opacity:0;}}
+@keyframes drift{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+@keyframes glow{0%,100%{box-shadow:0 0 24px rgba(201,168,76,.1);}50%{box-shadow:0 0 50px rgba(201,168,76,.35);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
 @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
-@keyframes slidein{from{opacity:0;transform:translateX(-20px);}to{opacity:1;transform:translateX(0);}}
-@keyframes flow{0%{stroke-dashoffset:100;}100%{stroke-dashoffset:0;}}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.15;}}
+@keyframes scan{0%{top:-10%;}100%{top:110%;}}
+@keyframes moveDot{0%{transform:translate(0,0);}25%{transform:translate(80px,-20px);}50%{transform:translate(160px,10px);}75%{transform:translate(240px,-15px);}100%{transform:translate(320px,0);}}
+@keyframes trail{to{stroke-dashoffset:0;}}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 
-.fade-up{opacity:0;animation:fadeUp .7s ease forwards;}
-.fade-up-2{opacity:0;animation:fadeUp .7s .15s ease forwards;}
-.fade-up-3{opacity:0;animation:fadeUp .7s .3s ease forwards;}
-
-/* ── HERO ── */
-.hero{position:relative;min-height:420px;display:flex;align-items:center;background:linear-gradient(135deg,#030810 0%,#060e1f 40%,#091828 100%);overflow:hidden;padding:60px 48px;}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:60px 60px;}
-.hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);top:-100px;right:-100px;animation:drift 8s ease-in-out infinite;}
-.hero-inner{max-width:920px;margin:0 auto;width:100%;position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
-.hero-text{flex:1;min-width:320px;}
-.hero-tag{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.hero-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--gold);}
-.hero h1{font-family:'Rajdhani',sans-serif;font-size:52px;font-weight:700;letter-spacing:3px;line-height:1.1;margin-bottom:20px;}
-.hero h1 em{font-style:normal;color:var(--gold);}
-.hero-sub{font-size:15px;color:#7a9ab8;line-height:1.8;max-width:480px;}
-.hero-sub strong{color:#c0d8ee;}
-.hero-stats{display:flex;gap:32px;margin-top:32px;flex-wrap:wrap;}
-.hero-stat{text-align:center;}
-.hero-stat .n{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;color:var(--gold);line-height:1;}
-.hero-stat .l{font-size:10px;color:#3a5a78;text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
-
-/* NEXUS DIAGRAM */
-.nexus-diagram{position:relative;width:200px;height:200px;flex-shrink:0;}
-.nexus-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.2);}
-.nexus-ring-1{inset:0;animation:spin 20s linear infinite;}
-.nexus-ring-2{inset:20px;animation:spin 15s linear infinite reverse;}
-.nexus-ring-3{inset:40px;animation:spin 10s linear infinite;}
-.nexus-core{position:absolute;inset:60px;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:1px solid rgba(201,168,76,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;animation:glow 3s ease-in-out infinite;}
-.nexus-core-text{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:2px;}
-.nexus-dot{position:absolute;width:8px;height:8px;background:var(--gold);border-radius:50%;}
-.nexus-dot-ping{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--gold);animation:ping 2s ease-out infinite;}
-
-/* ── LAYOUT ── */
-.wrap{max-width:920px;margin:0 auto;padding:0 48px;}
-.section{padding:64px 0;}
+/* LAYOUT */
+.wrap{max-width:940px;margin:0 auto;padding:0 48px;}
+.section{padding:68px 0;}
 .section+.section{border-top:1px solid rgba(255,255,255,.04);}
-.sec-label{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;opacity:.6;}
-.sec-title{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:#fff;letter-spacing:1px;margin-bottom:8px;}
-.sec-sub{font-size:14px;color:#5a7a98;line-height:1.7;max-width:680px;margin-bottom:36px;}
-.sec-sub strong{color:#8aaac8;}
+.sec-eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;opacity:.65;}
+.sec-title{font-family:'Rajdhani',sans-serif;font-size:30px;font-weight:700;letter-spacing:1px;margin-bottom:8px;}
+.sec-body{font-size:14px;color:#5a7a98;line-height:1.8;max-width:700px;margin-bottom:36px;}
+.sec-body strong{color:#a0c0d8;}
 
-/* ── LIVE DOT ── */
-.live-dot{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);}
-.live-dot::before{content:'';display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 1.5s ease-in-out infinite;}
+/* LIVE BADGE */
+.live{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);font-weight:600;}
+.live::before{content:'';width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 1.4s ease-in-out infinite;}
 
-/* ── NEXUS SECTION ── */
-.nexus-flow{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin-bottom:32px;}
-.nexus-col{display:flex;flex-direction:column;gap:10px;}
-.nexus-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:14px 16px;font-size:12px;color:#5a7a98;position:relative;overflow:hidden;}
-.nexus-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.3),transparent);}
-.nexus-box strong{display:block;font-size:12.5px;color:#c0d8ee;margin-bottom:3px;}
-.nexus-center{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 24px;gap:0;}
-.nexus-center-core{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.03));border:1px solid rgba(201,168,76,.3);border-radius:12px;padding:20px;text-align:center;width:120px;animation:glow 3s ease-in-out infinite;}
-.nexus-center-core .nn{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:var(--gold);letter-spacing:2px;}
-.nexus-center-core .ns{font-size:9px;color:#4a6a88;text-transform:uppercase;letter-spacing:1.5px;margin-top:2px;}
-.nexus-arrow{font-size:18px;color:rgba(201,168,76,.3);text-align:center;margin:6px 0;}
+/* ══ HERO ══ */
+.hero{min-height:440px;display:flex;align-items:center;position:relative;overflow:hidden;background:#060e1f;padding:64px 48px;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px);background-size:56px 56px;}
+.hero-radial{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 65%);right:-180px;top:-100px;animation:drift 9s ease-in-out infinite;}
+.hero-inner{max-width:940px;margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px;}
+.hero-label{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.hero-label::before{content:'';width:28px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Rajdhani',sans-serif;font-size:56px;font-weight:700;letter-spacing:3px;line-height:1.05;margin-bottom:20px;animation:fadeUp .8s ease both;}
+.hero h1 em{font-style:normal;color:var(--gold);}
+.hero-desc{font-size:15px;color:#6a8aaa;max-width:500px;line-height:1.8;animation:fadeUp .8s .1s ease both;}
+.hero-desc strong{color:#b0cce0;}
+.hero-pills{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;animation:fadeUp .8s .2s ease both;}
+.pill{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:6px 14px;font-size:11.5px;color:#6a8aaa;}
+.pill.gold{background:rgba(201,168,76,.07);border-color:rgba(201,168,76,.2);color:var(--gold);}
 
-/* ── OPS GRID ── */
+/* ORBIT DIAGRAM */
+.orbit-wrap{position:relative;width:210px;height:210px;flex-shrink:0;animation:fadeUp .8s .3s ease both;}
+.orbit-ring{position:absolute;border-radius:50%;border:1px solid;}
+.ring1{inset:0;border-color:rgba(201,168,76,.15);animation:spin 22s linear infinite;}
+.ring2{inset:22px;border-color:rgba(58,143,213,.12);animation:spin 16s linear infinite reverse;}
+.ring3{inset:44px;border-color:rgba(201,168,76,.1);animation:spin 11s linear infinite;}
+.orbit-core{position:absolute;inset:66px;background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.03));border:1px solid rgba(201,168,76,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;animation:glow 3.5s ease-in-out infinite;}
+.orbit-core-text{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:2px;}
+.orbit-core-sub{font-size:8px;color:#3a5a78;text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.orbit-node{position:absolute;width:28px;height:28px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;animation:bounce 3s ease-in-out infinite;}
+
+/* ══ SWARM TRUE SECTION ══ */
+.truth-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;}
+.truth-card{border-radius:12px;padding:22px;border:1px solid;}
+.truth-card.diff{background:rgba(201,168,76,.04);border-color:rgba(201,168,76,.18);}
+.truth-card.plain{background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.06);}
+.truth-card h3{font-size:13.5px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.truth-card h3 .ico{font-size:16px;}
+.truth-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.truth-list li{font-size:12.5px;color:#4a6a88;padding-left:16px;position:relative;line-height:1.5;}
+.truth-list li::before{position:absolute;left:0;}
+.truth-list.gold li::before{content:'→';color:var(--gold);font-size:11px;top:1px;}
+.truth-list.gray li::before{content:'·';color:#2a4060;font-size:16px;top:-2px;}
+
+/* COMMANDER LOOP */
+.cmd-loop{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;margin-bottom:28px;position:relative;overflow:hidden;}
+.cmd-loop::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.5),transparent);}
+.cmd-loop-title{font-size:12px;font-weight:600;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.loop-steps{display:flex;align-items:center;gap:0;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;}
+.loop-step{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;}
+.loop-step-circle{width:52px;height:52px;border-radius:50%;border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.06);display:flex;align-items:center;justify-content:center;font-size:20px;position:relative;}
+.loop-step-circle .badge{position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:var(--gold);border-radius:50%;font-size:9px;font-weight:700;color:#060e1f;display:flex;align-items:center;justify-content:center;}
+.loop-step-label{font-size:10px;color:#4a6a88;text-align:center;max-width:60px;line-height:1.3;}
+.loop-arrow{color:rgba(201,168,76,.3);font-size:18px;padding:0 6px;flex-shrink:0;margin-bottom:24px;}
+.loop-interval{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);border-radius:6px;padding:6px 14px;font-size:11px;color:var(--gold);text-align:center;margin-top:16px;display:inline-block;}
+
+/* DRONE CARDS */
+.drone-matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.drone-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px;text-align:center;transition:border-color .3s;}
+.drone-card.healthy{border-color:rgba(45,212,100,.2);}
+.drone-card.warn{border-color:rgba(255,152,0,.2);}
+.drone-card.lost{border-color:rgba(255,68,68,.15);opacity:.5;}
+.drone-card .dc-id{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff;margin-bottom:8px;}
+.drone-card .dc-role{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-bottom:8px;display:inline-block;}
+.role-patrol{background:rgba(58,143,213,.1);color:#5a9fd4;border:1px solid rgba(58,143,213,.2);}
+.role-overwatch{background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.2);}
+.role-tracking{background:rgba(45,212,100,.08);color:#4acc7a;border:1px solid rgba(45,212,100,.2);}
+.role-rtl{background:rgba(255,68,68,.08);color:#ff7070;border:1px solid rgba(255,68,68,.15);}
+.dc-batt{font-size:11px;color:#3a5a78;}
+.dc-batt .bv{font-weight:600;}
+.bv-green{color:#2dd462;}
+.bv-orange{color:#ff9800;}
+.bv-red{color:#ff4444;animation:blink 1.5s ease-in-out infinite;}
+
+/* GPS-DENIED */
+.gps-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.gps-panel{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;}
+.gps-panel-head{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.06);font-size:12px;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px;}
+.gps-panel-body{padding:20px;}
+.gps-map{position:relative;height:180px;background:rgba(0,0,0,.3);border-radius:8px;overflow:hidden;margin-bottom:14px;}
+.gps-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(58,143,213,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(58,143,213,.06) 1px,transparent 1px);background-size:20px 20px;}
+.gps-scan-line{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,100,.5),transparent);animation:scan 3s linear infinite;}
+.gps-drone{position:absolute;width:12px;height:12px;background:var(--gold);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:bounce 2s ease-in-out infinite;}
+.gps-drone::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(201,168,76,.3);animation:ping 2s ease-out infinite;}
+.gps-map-path{position:absolute;inset:0;}
+.gps-feat-list{display:flex;flex-direction:column;gap:10px;}
+.gps-feat{display:flex;gap:12px;align-items:flex-start;}
+.gps-feat-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.gps-feat h4{font-size:12.5px;font-weight:600;color:#c0d8ee;margin-bottom:2px;}
+.gps-feat p{font-size:11.5px;color:#3a5a78;line-height:1.5;}
+
+/* OPS GRID */
 .ops-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.op-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:22px 20px;cursor:default;transition:all .3s;position:relative;overflow:hidden;}
-.op-card:hover{border-color:rgba(201,168,76,.3);background:rgba(255,255,255,.04);transform:translateY(-2px);}
-.op-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--card-color,var(--gold)),transparent);opacity:0;transition:opacity .3s;}
+.op-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055);border-radius:12px;padding:22px 20px;transition:all .25s;position:relative;overflow:hidden;}
+.op-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;opacity:0;transition:opacity .25s;background:linear-gradient(90deg,transparent,var(--oc,var(--gold)),transparent);}
+.op-card:hover{border-color:rgba(201,168,76,.22);transform:translateY(-3px);background:rgba(255,255,255,.035);}
 .op-card:hover::after{opacity:1;}
-.op-icon{font-size:28px;margin-bottom:12px;}
-.op-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:6px;}
-.op-desc{font-size:12px;color:#4a6a88;line-height:1.6;margin-bottom:12px;}
+.op-icon{font-size:30px;margin-bottom:12px;}
+.op-title{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:7px;}
+.op-desc{font-size:12px;color:#4a6a88;line-height:1.65;margin-bottom:12px;}
 .op-tags{display:flex;flex-wrap:wrap;gap:5px;}
-.op-tag{font-size:9.5px;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;border-radius:3px;border:1px solid rgba(201,168,76,.2);color:var(--gold);background:rgba(201,168,76,.07);}
-.op-tag.blue{border-color:rgba(58,143,213,.3);color:#5a9fd4;background:rgba(58,143,213,.07);}
-.op-tag.green{border-color:rgba(45,212,100,.3);color:#4acc7a;background:rgba(45,212,100,.05);}
+.tag{font-size:9.5px;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:3px;border:1px solid;}
+.tag-g{background:rgba(45,212,100,.05);color:#4acc7a;border-color:rgba(45,212,100,.2);}
+.tag-b{background:rgba(58,143,213,.06);color:#5a9fd4;border-color:rgba(58,143,213,.2);}
+.tag-y{background:rgba(201,168,76,.07);color:var(--gold);border-color:rgba(201,168,76,.2);}
 
-/* ── GULF SECTION ── */
-.gulf-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
-.gulf-map{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px;position:relative;overflow:hidden;}
-.gulf-map-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3a5a78;margin-bottom:16px;}
-.bay-svg{width:100%;height:200px;}
-.gulf-zones{display:flex;flex-direction:column;gap:10px;}
-.gulf-zone{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-left:3px solid rgba(201,168,76,.5);border-radius:8px;padding:12px 14px;}
-.gulf-zone h4{font-size:12.5px;font-weight:600;color:#c0d8ee;margin-bottom:3px;}
-.gulf-zone p{font-size:11.5px;color:#3a5a78;line-height:1.4;}
-.gulf-zone .alert{font-size:10px;margin-top:6px;color:#ff9f43;}
+/* TAE */
+.tae-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.tae-box{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:22px;}
+.tae-box-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.risk-bars{display:flex;flex-direction:column;gap:11px;}
+.rb-row{display:flex;flex-direction:column;gap:4px;}
+.rb-head{display:flex;justify-content:space-between;font-size:11.5px;}
+.rb-head span{color:#4a6a88;}
+.rb-track{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;}
+.rb-fill{height:100%;border-radius:3px;}
+.fill-g{background:linear-gradient(90deg,#2dd462,#4aff88);}
+.fill-o{background:linear-gradient(90deg,#ff9800,#ffb74d);}
+.fill-r{background:linear-gradient(90deg,#ff4444,#ff7070);}
+.fill-b{background:linear-gradient(90deg,#3a8fd4,#6ab4ff);}
+.fill-y{background:linear-gradient(90deg,#C9A84C,#F0D878);}
+.alerts{display:flex;flex-direction:column;gap:9px;}
+.alert-item{border-radius:7px;padding:11px 13px;display:flex;gap:10px;align-items:flex-start;font-size:12px;background:rgba(255,255,255,.025);}
+.alert-item .ai-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+.alert-item strong{display:block;font-size:12.5px;color:#c0d8ee;margin-bottom:1px;}
+.alert-item p{font-size:11.5px;color:#5a7a98;line-height:1.4;}
+.al-crit{border-left:2px solid #ff4444;animation:blink 2s ease-in-out infinite;}
+.al-warn{border-left:2px solid #ff9800;}
+.al-info{border-left:2px solid #3a8fd4;}
 
-/* ── TAE SECTION ── */
-.tae-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-.tae-panel{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:22px;}
-.tae-panel-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.risk-bars{display:flex;flex-direction:column;gap:10px;}
-.risk-row{display:flex;flex-direction:column;gap:4px;}
-.risk-label{display:flex;justify-content:space-between;font-size:11px;}
-.risk-label span:first-child{color:#5a7a98;}
-.risk-label span:last-child{font-weight:600;}
-.risk-bar-bg{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;}
-.risk-bar-fill{height:100%;border-radius:3px;transition:width 1s ease;}
-.risk-fill-green{background:linear-gradient(90deg,#2dd462,#4aff88);width:88%;}
-.risk-fill-orange{background:linear-gradient(90deg,#ff9800,#ffb74d);width:62%;}
-.risk-fill-red{background:linear-gradient(90deg,#ff4444,#ff7070);width:23%;}
-.risk-fill-blue{background:linear-gradient(90deg,#3a8fd4,#6ab4ff);width:91%;}
-.risk-fill-yellow{background:linear-gradient(90deg,#C9A84C,#F0D878);width:77%;}
-.alert-list{display:flex;flex-direction:column;gap:8px;}
-.alert-item{background:rgba(255,255,255,.03);border-radius:6px;padding:10px 12px;display:flex;align-items:flex-start;gap:10px;font-size:12px;}
-.alert-item .al-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
-.alert-item .al-text{color:#7a9ab8;line-height:1.4;}
-.alert-item .al-text strong{display:block;color:#c0d8ee;font-size:12.5px;margin-bottom:1px;}
-.alert-item.warn{border-left:2px solid var(--orange);}
-.alert-item.crit{border-left:2px solid var(--red);animation:blink 2s ease-in-out infinite;}
-.alert-item.info{border-left:2px solid #3a8fd4;}
-
-/* ── SWARM SECTION ── */
-.swarm-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-.formation-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.formation-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px;text-align:center;}
-.formation-card svg{width:80px;height:60px;margin:0 auto 10px;}
-.formation-card h4{font-size:12.5px;font-weight:600;color:#fff;margin-bottom:4px;}
-.formation-card p{font-size:11px;color:#3a5a78;line-height:1.4;}
-.swarm-stats{display:flex;flex-direction:column;gap:12px;}
-.swarm-stat-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:18px 20px;}
-.swarm-stat-card .big{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--gold);}
-.swarm-stat-card p{font-size:12px;color:#4a6a88;margin-top:4px;line-height:1.4;}
-.drone-dot{width:10px;height:10px;background:var(--gold);border-radius:50%;display:inline-block;}
-.drone-dot.active{animation:pulse 1.5s ease-in-out infinite;}
-
-/* ── FLIGHTHUB ── */
-.fh-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-.fh-screen{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px;overflow:hidden;}
-.fh-screen-bar{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.06);}
-.fh-dot-r{width:8px;height:8px;border-radius:50%;background:#ff5f57;}
-.fh-dot-y{width:8px;height:8px;border-radius:50%;background:#ffbd2e;}
-.fh-dot-g{width:8px;height:8px;border-radius:50%;background:#28ca41;}
-.fh-screen-title{font-size:11px;color:#3a5a78;margin-left:4px;}
-.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
-.mini-metric{background:rgba(255,255,255,.03);border-radius:6px;padding:10px;text-align:center;}
-.mini-metric .v{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:var(--gold);}
-.mini-metric .l{font-size:9.5px;color:#2a4a68;text-transform:uppercase;letter-spacing:.5px;}
-.bar-chart{display:flex;flex-direction:column;gap:6px;}
-.bc-row{display:flex;align-items:center;gap:8px;font-size:11px;}
-.bc-row span{color:#3a5a78;width:60px;flex-shrink:0;}
-.bc-track{flex:1;height:5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;}
-.bc-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));}
-.bc-val{width:30px;text-align:right;color:#5a7a98;}
-.fh-features{display:flex;flex-direction:column;gap:10px;}
-.fh-feat{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
+/* FLIGHTHUB */
+.fh-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;}
+.fh-mock{background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;}
+.fh-bar{background:rgba(255,255,255,.03);padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,.06);}
+.fh-dot{width:8px;height:8px;border-radius:50%;}
+.fh-bar-title{font-size:11px;color:#2a4060;margin-left:6px;flex:1;}
+.fh-body{padding:18px;}
+.fh-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.fh-m{background:rgba(255,255,255,.03);border-radius:6px;padding:10px;text-align:center;}
+.fh-m .v{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:var(--gold);}
+.fh-m .l{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:#2a4060;margin-top:2px;}
+.fh-section-label{font-size:9.5px;text-transform:uppercase;letter-spacing:1.5px;color:#2a4060;margin-bottom:8px;}
+.motor-bars{display:flex;flex-direction:column;gap:5px;}
+.mb-row{display:flex;align-items:center;gap:8px;font-size:10.5px;}
+.mb-row span{width:52px;color:#3a5a78;}
+.mb-track{flex:1;height:5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;}
+.mb-fill{height:100%;border-radius:3px;}
+.fh-warn{background:rgba(255,152,0,.07);border:1px solid rgba(255,152,0,.18);border-radius:6px;padding:10px 12px;margin-top:12px;font-size:11px;color:#ffa940;line-height:1.5;}
+.fh-features{display:flex;flex-direction:column;gap:11px;}
+.fh-feat{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:9px;padding:14px 16px;}
 .fh-feat-icon{font-size:18px;flex-shrink:0;}
-.fh-feat h4{font-size:13px;font-weight:600;color:#fff;margin-bottom:3px;}
+.fh-feat h4{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px;}
 .fh-feat p{font-size:11.5px;color:#3a5a78;line-height:1.5;}
+.fh-live-badge{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.18);border-radius:8px;padding:12px 16px;text-align:center;margin-top:8px;}
+.fh-live-badge .b{font-size:13px;color:var(--gold);font-weight:600;}
+.fh-live-badge .s{font-size:11px;color:#2a4060;margin-top:3px;}
 
-/* ── PARTNER ── */
-.partner-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-.partner-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:22px 20px;position:relative;overflow:hidden;}
-.partner-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.5),transparent);}
-.partner-card h3{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:.5px;}
+/* NEXUS */
+.nexus-flow{display:grid;grid-template-columns:1fr 90px 1fr;gap:0;align-items:center;margin-bottom:24px;}
+.nexus-col{display:flex;flex-direction:column;gap:9px;}
+.nx-box{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:13px 15px;}
+.nx-box strong{display:block;font-size:12.5px;color:#c0d8ee;margin-bottom:2px;}
+.nx-box p{font-size:11.5px;color:#3a5a78;line-height:1.4;}
+.nx-center{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 10px;}
+.nx-core{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.03));border:1px solid rgba(201,168,76,.28);border-radius:10px;padding:16px 10px;text-align:center;width:80px;animation:glow 3.5s ease-in-out infinite;}
+.nx-core .nn{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:var(--gold);letter-spacing:2px;}
+.nx-core .ns{font-size:8px;color:#3a5a78;text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.nx-arr{color:rgba(201,168,76,.25);font-size:16px;text-align:center;}
+
+/* TRUSTED BY */
+.trusted{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;padding:48px 0 0;}
+.trust-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px 28px;text-align:center;min-width:170px;}
+.trust-card .tc-flag{font-size:26px;margin-bottom:8px;}
+.trust-card .tc-name{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff;letter-spacing:.3px;}
+.trust-card .tc-sub{font-size:10.5px;color:#2a4060;margin-top:2px;}
+
+/* PARTNER */
+.partner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.partner-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055);border-radius:12px;padding:22px;position:relative;overflow:hidden;}
+.partner-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.45),transparent);}
+.partner-card h3{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:.3px;}
 .partner-card p{font-size:12.5px;color:#4a6a88;line-height:1.65;}
-.partner-card .outcome{font-size:11.5px;color:var(--gold);margin-top:12px;font-weight:500;}
+.outcome{font-size:12px;color:var(--gold);margin-top:12px;font-weight:500;}
 
-/* ── CONTACT ── */
-.contact-section{background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(10,102,194,.04));border:1px solid rgba(201,168,76,.13);border-radius:16px;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:28px;margin-top:48px;}
-.contact-left h2{font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:#fff;letter-spacing:1px;margin-bottom:6px;}
-.contact-left p{font-size:13px;color:#4a6a88;}
-.contact-items{display:flex;flex-direction:column;gap:10px;}
-.contact-item{font-size:13px;color:#8aaac8;display:flex;align-items:center;gap:10px;}
-.ci-icon{font-size:16px;}
-
-/* ── FOOTER ── */
+/* CONTACT */
+.contact-bar{background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(10,102,194,.04));border:1px solid rgba(201,168,76,.13);border-radius:16px;padding:38px 44px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:28px;margin-top:52px;}
+.contact-bar h2{font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:#fff;letter-spacing:1px;margin-bottom:5px;}
+.contact-bar .sub{font-size:13px;color:#3a5a78;}
+.ci-list{display:flex;flex-direction:column;gap:10px;}
+.ci{display:flex;align-items:center;gap:10px;font-size:13px;color:#7a9ab8;}
 .footer{padding:28px 0 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,.04);margin-top:20px;}
-.footer-logo{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:5px;color:rgba(201,168,76,.3);}
-.footer p{font-size:10.5px;color:#1a2a3a;}
+.footer-logo{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;letter-spacing:5px;color:rgba(201,168,76,.28);}
+.footer p{font-size:10.5px;color:#1a2a38;}
 
-@media(max-width:680px){
-  .hero{padding:40px 24px;}
-  .hero h1{font-size:36px;}
-  .wrap{padding:0 24px;}
+@media(max-width:700px){
+  .hero-inner,.truth-grid,.tae-grid,.gps-layout,.fh-layout,.partner-grid{grid-template-columns:1fr;}
+  .orbit-wrap{display:none;}
   .ops-grid{grid-template-columns:1fr 1fr;}
-  .gulf-layout,.tae-layout,.swarm-layout,.fh-layout,.partner-cards{grid-template-columns:1fr;}
+  .drone-matrix{grid-template-columns:1fr 1fr;}
   .nexus-flow{grid-template-columns:1fr;}
-  .nexus-center{display:none;}
-  .formation-grid{grid-template-columns:1fr 1fr;}
+  .nx-center{display:none;}
+  .wrap{padding:0 20px;}
+  .hero{padding:44px 20px;}
 }
-@media(max-width:460px){
-  .ops-grid{grid-template-columns:1fr;}
-}
+@media(max-width:420px){.ops-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -215,296 +248,393 @@ body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-heigh
 <!-- ═══ HERO ═══ -->
 <div class="hero">
   <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
+  <div class="hero-radial"></div>
   <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-tag">BBA Teknoloji · İzmir, Türkiye</div>
-      <h1 class="fade-up">Drone <em>AI</em><br>Software</h1>
-      <p class="hero-sub fade-up-2">We build the intelligence layer for drone operations — <strong>autonomous missions, real-time AI vision, swarm coordination</strong> and fleet analytics. Hardware-agnostic. Deployable on any drone.</p>
-      <div class="hero-stats fade-up-3">
-        <div class="hero-stat"><div class="n">9+</div><div class="l">Operation Types</div></div>
-        <div class="hero-stat"><div class="n">30+</div><div class="l">Vision Algorithms</div></div>
-        <div class="hero-stat"><div class="n">24/7</div><div class="l">Autonomous Ops</div></div>
-        <div class="hero-stat"><div class="n">Live</div><div class="l">bbaflighthub.com</div></div>
+    <div>
+      <div class="hero-label">BBA Teknoloji · İzmir, Türkiye</div>
+      <h1>Drone <em>AI</em><br>Software</h1>
+      <p class="hero-desc">We build the <strong>intelligence layer</strong> for drone operations — autonomous mission control, swarm coordination, real-time AI vision, GPS-denied navigation, and fleet analytics. Works on <strong>any drone, without hardware modification.</strong></p>
+      <div class="hero-pills">
+        <span class="pill gold">No Hardware Mods Required</span>
+        <span class="pill">ArduPilot · PX4 · MAVLink</span>
+        <span class="pill">GPS-Denied Flight</span>
+        <span class="pill">24/7 Autonomous Ops</span>
       </div>
     </div>
-
-    <!-- NEXUS ORBIT DIAGRAM -->
-    <div class="nexus-diagram" style="display:none;" id="nexusDiagram">
-      <div class="nexus-ring nexus-ring-1"></div>
-      <div class="nexus-ring nexus-ring-2"></div>
-      <div class="nexus-ring nexus-ring-3"></div>
-      <div class="nexus-core">
-        <div class="nexus-core-text">NEXUS</div>
+    <div class="orbit-wrap">
+      <div class="orbit-ring ring1"></div>
+      <div class="orbit-ring ring2"></div>
+      <div class="orbit-ring ring3"></div>
+      <div class="orbit-core">
+        <div class="orbit-core-text">NEXUS</div>
+        <div class="orbit-core-sub">AI Core</div>
       </div>
+      <div class="orbit-node" style="top:4px;left:50%;margin-left:-14px;animation-delay:.2s;">🛰️</div>
+      <div class="orbit-node" style="bottom:4px;left:50%;margin-left:-14px;animation-delay:.6s;">📡</div>
+      <div class="orbit-node" style="left:4px;top:50%;margin-top:-14px;animation-delay:1s;">🤖</div>
+      <div class="orbit-node" style="right:4px;top:50%;margin-top:-14px;animation-delay:1.4s;">🔭</div>
     </div>
   </div>
 </div>
 
-<!-- ═══ NEXUS ═══ -->
+<!-- ═══ SWARM — TRUE CAPABILITY ═══ -->
 <div class="section">
   <div class="wrap">
-    <div class="sec-label">Core Intelligence</div>
-    <div class="sec-title">NEXUS — The Mission Brain</div>
-    <div class="sec-sub">Every operation runs through NEXUS — the central intelligence platform that connects <strong>live data sources, AI vision tasks, policy rules, and autonomous drone control</strong> into a single unified operation. One screen, every sensor, total situational awareness.</div>
+    <div class="sec-eyebrow">Multi-UAV System</div>
+    <div class="sec-title">Swarm — What It Actually Does</div>
+    <div class="sec-body">Not just multi-drone GCS. The swarm system has an <strong>AI Commander</strong> — a central brain that watches every drone every 2–4 seconds, makes tactical decisions, assigns specialized roles, and acts autonomously. <strong>No hardware changes needed</strong> — connects over standard MAVLink to any PX4 or ArduPilot drone.</div>
 
-    <div class="nexus-flow">
-      <!-- INPUTS -->
-      <div class="nexus-col">
-        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#3a5a78;margin-bottom:4px;">Data Sources</div>
-        <div class="nexus-box"><strong>Live Drone Video</strong>Real-time aerial feed from any drone, any camera</div>
-        <div class="nexus-box"><strong>Coastal Cameras</strong>Static CCTV / IP camera integration (Kordon, Alsancak, Karşıyaka…)</div>
-        <div class="nexus-box"><strong>Satellite Imagery</strong>Change detection, large-area analysis</div>
-        <div class="nexus-box"><strong>AIS Ship Tracking</strong>Vessel type, navigation status, route data</div>
-        <div class="nexus-box"><strong>Telemetry</strong>Drone position, altitude, battery, sensors</div>
+    <!-- AI COMMANDER LOOP -->
+    <div class="cmd-loop">
+      <div class="cmd-loop-title">
+        <div class="live">AI Commander Loop</div>
+        &nbsp;— runs every 2–4 seconds
       </div>
-
-      <!-- CENTER -->
-      <div class="nexus-center">
-        <div class="nexus-arrow">→</div>
-        <div class="nexus-center-core">
-          <div class="nn">NEXUS</div>
-          <div class="ns">AI Core</div>
+      <div class="loop-steps">
+        <div class="loop-step">
+          <div class="loop-step-circle"><span>📡</span><div class="badge">1</div></div>
+          <div class="loop-step-label">Read all drone telemetry</div>
         </div>
-        <div class="nexus-arrow">→</div>
-      </div>
-
-      <!-- OUTPUTS -->
-      <div class="nexus-col">
-        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#3a5a78;margin-bottom:4px;">Outputs</div>
-        <div class="nexus-box"><strong>Real-Time Alerts</strong>Zone breaches, anomalies, incidents — instant notification</div>
-        <div class="nexus-box"><strong>Autonomous Drone Actions</strong>Reroute, investigate, hover, alert — no pilot needed</div>
-        <div class="nexus-box"><strong>AI Situation Reports</strong>Plain-language briefing of everything detected this mission</div>
-        <div class="nexus-box"><strong>Zone Policy Enforcement</strong>Capacity limits, restricted access, intrusion rules</div>
-        <div class="nexus-box"><strong>Operator Dashboard</strong>All sources, all events, all drone status in one view</div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-step">
+          <div class="loop-step-circle"><span>🔭</span><div class="badge">2</div></div>
+          <div class="loop-step-label">Process vision detections</div>
+        </div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-step">
+          <div class="loop-step-circle"><span>🧠</span><div class="badge">3</div></div>
+          <div class="loop-step-label">LLM analyzes & decides</div>
+        </div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-step">
+          <div class="loop-step-circle"><span>⚡</span><div class="badge">4</div></div>
+          <div class="loop-step-label">Send commands to drones</div>
+        </div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-step">
+          <div class="loop-step-circle"><span>📊</span><div class="badge">5</div></div>
+          <div class="loop-step-label">Update operator screen</div>
+        </div>
       </div>
     </div>
 
-    <div style="background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.12);border-radius:10px;padding:18px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-      <div class="live-dot">Live AI Analysis</div>
-      <div style="flex:1;font-size:12.5px;color:#5a7a98;line-height:1.6;">NEXUS runs in three modes — <span style="color:#c0d8ee;">MANUAL</span> (operator decides everything), <span style="color:#c0d8ee;">ASSIST</span> (AI suggests, operator confirms), and <span style="color:#c0d8ee;">AUTO</span> (fully autonomous — AI observes, decides, and acts without a pilot in the loop).</div>
+    <!-- LIVE FLEET STATUS MOCK -->
+    <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#2a4060;margin-bottom:12px;">Live Fleet — AI Role Assignment</div>
+    <div class="drone-matrix">
+      <div class="drone-card healthy">
+        <div class="dc-id">DRONE-1</div>
+        <div class="dc-role role-patrol">Patrol</div>
+        <div class="dc-batt">Sector 1 · <span class="bv bv-green">91%</span></div>
+      </div>
+      <div class="drone-card healthy">
+        <div class="dc-id">DRONE-2</div>
+        <div class="dc-role role-overwatch">Overwatch</div>
+        <div class="dc-batt">Zone A · <span class="bv bv-green">84%</span></div>
+      </div>
+      <div class="drone-card healthy">
+        <div class="dc-id">DRONE-3</div>
+        <div class="dc-role role-tracking">Tracking</div>
+        <div class="dc-batt">Target lock · <span class="bv bv-orange">47%</span></div>
+      </div>
+      <div class="drone-card lost">
+        <div class="dc-id">DRONE-4</div>
+        <div class="dc-role role-rtl">RTL</div>
+        <div class="dc-batt">→ Dock · <span class="bv bv-red">18%</span></div>
+      </div>
+    </div>
+
+    <div style="background:rgba(45,212,100,.04);border:1px solid rgba(45,212,100,.12);border-radius:8px;padding:12px 16px;font-size:12.5px;color:#4acc7a;margin-bottom:28px;">
+      ↳ DRONE-4 battery critical — <strong>Commander auto-assigned RTL, redistributed Sector 4 to DRONE-1 and DRONE-2.</strong> Zero operator input needed.
+    </div>
+
+    <!-- WHAT MAKES IT DIFFERENT -->
+    <div class="truth-grid">
+      <div class="truth-card diff">
+        <h3><span class="ico">✅</span> BBA Swarm System</h3>
+        <ul class="truth-list gold">
+          <li>AI Commander decides which drone goes where</li>
+          <li>Detects a threat → automatically re-tasks nearest drone to investigate</li>
+          <li>Drone battery low → auto-assigns RTL, sector redistributed</li>
+          <li>Drone lost → swarm covers without any command</li>
+          <li>One operator manages 10+ drones simultaneously</li>
+          <li>Per-drone AI vision — each drone's camera fed into central analysis</li>
+          <li>Works on any PX4/ArduPilot drone, zero hardware changes</li>
+          <li>Formations: Line, V, Circle, Grid — auto-calculated positions</li>
+        </ul>
+      </div>
+      <div class="truth-card plain">
+        <h3><span class="ico">🚫</span> Standard Multi-Drone GCS</h3>
+        <ul class="truth-list gray">
+          <li>Operator manually selects each drone and issues commands</li>
+          <li>Threat detected on screen — human decides response</li>
+          <li>Battery warning on screen — human decides when to RTL</li>
+          <li>Drone lost — human reassigns manually</li>
+          <li>1 operator needed per 1–2 drones effectively</li>
+          <li>Video streams watched by a human analyst</li>
+          <li>Often requires proprietary hardware or firmware</li>
+          <li>No automatic formation maintenance</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ REAL OPERATIONS ═══ -->
+<!-- ═══ GPS-DENIED FLIGHT ═══ -->
 <div class="section">
   <div class="wrap">
-    <div class="sec-label">Operational Use Cases</div>
-    <div class="sec-title">9 Real-World Operation Types</div>
-    <div class="sec-sub">Each operation type has a purpose-built AI workflow — detection targets, alert rules, mission routes, and reports tuned specifically for that industry.</div>
+    <div class="sec-eyebrow">Indoor & GPS-Denied</div>
+    <div class="sec-title">Flies Where GPS Doesn't Exist</div>
+    <div class="sec-body">Warehouses, tunnels, underground facilities, urban canyons — environments where GPS is unavailable or unreliable. BBA's autonomous navigation system uses <strong>only onboard cameras and sensors</strong> to fly, map, and complete missions. No external infrastructure, no beacons, no pre-loaded maps.</div>
+
+    <div class="gps-layout">
+      <div class="gps-panel">
+        <div class="gps-panel-head">
+          <div class="live">Mapping Live</div>&nbsp;— Drone building its own map
+        </div>
+        <div class="gps-panel-body">
+          <div class="gps-map">
+            <div class="gps-grid"></div>
+            <div class="gps-scan-line"></div>
+            <!-- Simulated map path with SVG -->
+            <svg class="gps-map-path" viewBox="0 0 280 180" preserveAspectRatio="none">
+              <path d="M40 90 L80 60 L140 55 L200 70 L230 100 L210 140 L150 150 L90 140 L50 120 Z" fill="none" stroke="rgba(201,168,76,.15)" stroke-width="1" stroke-dasharray="4,3"/>
+              <path d="M40 90 L80 60 L140 55 L190 68" fill="none" stroke="rgba(45,212,100,.5)" stroke-width="1.5" stroke-dasharray="200" stroke-dashoffset="0"/>
+              <circle cx="190" cy="68" r="4" fill="var(--gold)"/>
+              <circle cx="190" cy="68" r="10" fill="none" stroke="rgba(201,168,76,.3)" stroke-width="1">
+                <animate attributeName="r" from="4" to="18" dur="2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" from=".8" to="0" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <!-- Point cloud dots -->
+              <circle cx="55" cy="80" r="1.5" fill="rgba(58,143,213,.5)"/>
+              <circle cx="70" cy="65" r="1.5" fill="rgba(58,143,213,.5)"/>
+              <circle cx="90" cy="58" r="1.5" fill="rgba(58,143,213,.5)"/>
+              <circle cx="110" cy="55" r="1.5" fill="rgba(58,143,213,.5)"/>
+              <circle cx="130" cy="54" r="1.5" fill="rgba(58,143,213,.5)"/>
+              <circle cx="150" cy="56" r="1.5" fill="rgba(58,143,213,.5)"/>
+              <circle cx="165" cy="61" r="1.5" fill="rgba(58,143,213,.5)"/>
+              <circle cx="78" cy="72" r="1.5" fill="rgba(58,143,213,.4)"/>
+              <circle cx="95" cy="68" r="1.5" fill="rgba(58,143,213,.4)"/>
+              <circle cx="115" cy="65" r="1.5" fill="rgba(58,143,213,.4)"/>
+            </svg>
+          </div>
+          <div style="font-size:11px;color:#2a4060;display:flex;gap:16px;flex-wrap:wrap;">
+            <span>📍 GPS Signal: <span style="color:#ff4444;font-weight:600;">NONE</span></span>
+            <span>📷 Vision: <span style="color:#2dd462;font-weight:600;">ONLINE</span></span>
+            <span>🗺️ Map Coverage: <span style="color:var(--gold);font-weight:600;">34%</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gps-panel">
+        <div class="gps-panel-head">🧠 How It Works</div>
+        <div class="gps-panel-body">
+          <div class="gps-feat-list">
+            <div class="gps-feat">
+              <div class="gps-feat-icon">📷</div>
+              <div>
+                <h4>Vision-Only Localization</h4>
+                <p>Stereo cameras build a 3D point cloud in real-time. The drone knows exactly where it is by matching visual features — no GPS, no external sensors.</p>
+              </div>
+            </div>
+            <div class="gps-feat">
+              <div class="gps-feat-icon">🗺️</div>
+              <div>
+                <h4>Simultaneous Mapping</h4>
+                <p>While flying, the drone builds a full 3D map of the environment. If it returns to a known area, it recognizes it and corrects any accumulated error.</p>
+              </div>
+            </div>
+            <div class="gps-feat">
+              <div class="gps-feat-icon">🛤️</div>
+              <div>
+                <h4>Autonomous Path Planning</h4>
+                <p>Given a target — "inspect the far wall" or "go to position X" — the drone plans a collision-free path and flies there without pilot input.</p>
+              </div>
+            </div>
+            <div class="gps-feat">
+              <div class="gps-feat-icon">🚧</div>
+              <div>
+                <h4>Real-Time Obstacle Avoidance</h4>
+                <p>Depth cameras detect obstacles instantly. The drone stops, re-routes, and continues — even in previously unknown environments.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;">
+      <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:18px;text-align:center;">
+        <div style="font-size:28px;font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--gold);">0</div>
+        <div style="font-size:12px;color:#3a5a78;margin-top:4px;">GPS satellites needed</div>
+      </div>
+      <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:18px;text-align:center;">
+        <div style="font-size:28px;font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--gold);">0</div>
+        <div style="font-size:12px;color:#3a5a78;margin-top:4px;">Pre-installed beacons or markers</div>
+      </div>
+      <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:18px;text-align:center;">
+        <div style="font-size:28px;font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--gold);">0</div>
+        <div style="font-size:12px;color:#3a5a78;margin-top:4px;">Hardware modifications to drone</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NEXUS + OPS ═══ -->
+<div class="section">
+  <div class="wrap">
+    <div class="sec-eyebrow">Mission Intelligence</div>
+    <div class="sec-title">NEXUS — 9 Real-World Operations</div>
+    <div class="sec-body">NEXUS is the platform that connects live data sources — drones, cameras, AIS vessels, satellite — to purpose-built AI workflows. Each operation type has its own detection targets, alert rules, mission routes, and automated reporting.</div>
+
+    <!-- NEXUS FLOW DIAGRAM -->
+    <div class="nexus-flow" style="margin-bottom:28px;">
+      <div class="nexus-col">
+        <div style="font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#2a4060;margin-bottom:4px;">Data Sources</div>
+        <div class="nx-box"><strong>Live Drone Video</strong><p>Any drone, any camera</p></div>
+        <div class="nx-box"><strong>Coastal Cameras</strong><p>Kordon, Alsancak, Karşıyaka…</p></div>
+        <div class="nx-box"><strong>AIS Vessel Tracking</strong><p>Ship type, route, nav status</p></div>
+        <div class="nx-box"><strong>Satellite Imagery</strong><p>Change detection, large area</p></div>
+      </div>
+      <div class="nx-center">
+        <div class="nx-arr">→</div>
+        <div class="nx-core"><div class="nn">NEXUS</div><div class="ns">AI Core</div></div>
+        <div class="nx-arr">→</div>
+      </div>
+      <div class="nexus-col">
+        <div style="font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#2a4060;margin-bottom:4px;">Outputs</div>
+        <div class="nx-box"><strong>Instant Alerts</strong><p>Zone breach, anomaly, incident</p></div>
+        <div class="nx-box"><strong>Autonomous Drone Action</strong><p>Reroute, investigate, hover</p></div>
+        <div class="nx-box"><strong>AI Situation Report</strong><p>Plain-language mission brief</p></div>
+        <div class="nx-box"><strong>Zone Policy Enforcement</strong><p>Capacity, access, intrusion rules</p></div>
+      </div>
+    </div>
+
+    <!-- 3 MODES -->
+    <div style="display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:160px;background:rgba(58,143,213,.06);border:1px solid rgba(58,143,213,.18);border-radius:8px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:600;color:#5a9fd4;margin-bottom:4px;">MANUAL</div>
+        <div style="font-size:11.5px;color:#3a5a78;line-height:1.5;">Operator controls everything. NEXUS provides live data and alerts only.</div>
+      </div>
+      <div style="flex:1;min-width:160px;background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.18);border-radius:8px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:600;color:var(--gold);margin-bottom:4px;">ASSIST</div>
+        <div style="font-size:11.5px;color:#3a5a78;line-height:1.5;">AI suggests actions. Operator confirms before execution.</div>
+      </div>
+      <div style="flex:1;min-width:160px;background:rgba(45,212,100,.04);border:1px solid rgba(45,212,100,.15);border-radius:8px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:600;color:#4acc7a;margin-bottom:4px;">AUTO</div>
+        <div style="font-size:11.5px;color:#3a5a78;line-height:1.5;">Fully autonomous. AI observes, decides, and acts without a pilot in the loop.</div>
+      </div>
+    </div>
 
     <div class="ops-grid">
-
-      <div class="op-card" style="--card-color:#4acc7a;">
+      <div class="op-card" style="--oc:#4acc7a;">
         <div class="op-icon">🌊</div>
-        <div class="op-title">İzmir Körfezi — Gulf Pollution Monitoring</div>
-        <div class="op-desc">Coastal cameras + drone patrols watch for oil spills, illegal dumping, and suspicious vessel stops in 4 protected zones: Alsancak, İnciraltı, Karşıyaka, Bayraklı. AIS vessel tracking integrated.</div>
-        <div class="op-tags"><span class="op-tag green">Live Cameras</span><span class="op-tag">AIS Vessels</span><span class="op-tag blue">Oil Spill AI</span></div>
+        <div class="op-title">İzmir Körfezi — Pollution Monitoring</div>
+        <div class="op-desc">4 protected coastal zones monitored via static cameras + drone patrol. AIS vessel tracking detects suspicious stops, oil spills, illegal dumping. Live alerts to authorities.</div>
+        <div class="op-tags"><span class="tag tag-g">Alsancak</span><span class="tag tag-g">Karşıyaka</span><span class="tag tag-b">AIS Ships</span><span class="tag tag-y">Oil Spill AI</span></div>
       </div>
-
-      <div class="op-card" style="--card-color:#5a9fd4;">
+      <div class="op-card" style="--oc:#5a9fd4;">
         <div class="op-icon">🏗️</div>
         <div class="op-title">Urban Excavation Supervision</div>
-        <div class="op-desc">Drone oversight of infrastructure works — gas, water, electrical, telecom, transport. Inspectors can upload field photos alongside drone footage. Detects unauthorized digging, missing safety barriers, and active violations.</div>
-        <div class="op-tags"><span class="op-tag">9 Work Types</span><span class="op-tag blue">Drone + Field</span><span class="op-tag">Compliance Log</span></div>
+        <div class="op-desc">Drone oversight of gas, water, electrical, telecom infrastructure works across 9 work categories. Detects unauthorized digging, missing safety measures, active violations.</div>
+        <div class="op-tags"><span class="tag tag-b">9 Work Types</span><span class="tag tag-y">Compliance Log</span><span class="tag tag-g">Auto Report</span></div>
       </div>
-
-      <div class="op-card" style="--card-color:#ff9800;">
+      <div class="op-card" style="--oc:#ff9800;">
         <div class="op-icon">🛡️</div>
         <div class="op-title">Security Patrol</div>
-        <div class="op-desc">Autonomous perimeter patrol with AI person and vehicle detection, zone intrusion alerts, and suspicious activity flagging. Drone re-routes automatically to investigate any breach. Runs 24/7 with dock-recharge cycles.</div>
-        <div class="op-tags"><span class="op-tag">Person Detection</span><span class="op-tag green">24/7 Auto</span><span class="op-tag">Perimeter Breach</span></div>
+        <div class="op-desc">Autonomous perimeter patrol. Person, vehicle, zone intrusion detection. Drone re-tasks to breach point automatically. 24/7 via dock-recharge. No night-shift needed.</div>
+        <div class="op-tags"><span class="tag tag-g">24/7 Auto</span><span class="tag tag-y">AI Reroute</span><span class="tag tag-b">Dock Charge</span></div>
       </div>
-
-      <div class="op-card" style="--card-color:#C9A84C;">
+      <div class="op-card" style="--oc:#C9A84C;">
         <div class="op-icon">⚡</div>
         <div class="op-title">Power Line Inspection</div>
-        <div class="op-desc">AI detects insulator damage, conductor sag, vegetation encroachment, tower corrosion, and bird nests. Covers hundreds of kilometers per mission. Generates itemized defect report with GPS coordinates.</div>
-        <div class="op-tags"><span class="op-tag">6 Defect Types</span><span class="op-tag blue">GPS Tagged</span><span class="op-tag">AI Report</span></div>
+        <div class="op-desc">Insulator damage, conductor sag, vegetation encroachment, bird nests, corrosion. Hundreds of km per mission. GPS-tagged defect report generated automatically.</div>
+        <div class="op-tags"><span class="tag tag-y">GPS Tagged</span><span class="tag tag-b">6 Defect Types</span><span class="tag tag-g">AI Report</span></div>
       </div>
-
-      <div class="op-card" style="--card-color:#ff5f57;">
+      <div class="op-card" style="--oc:#ff5f57;">
         <div class="op-icon">🌀</div>
         <div class="op-title">Wind Turbine Inspection</div>
-        <div class="op-desc">Blade cracks, erosion, lightning strike marks, ice buildup, oil leak detection. Close-proximity autonomous flight around each turbine. Results timestamped and archived per turbine ID for maintenance history.</div>
-        <div class="op-tags"><span class="op-tag">6 Defect Types</span><span class="op-tag green">Per-Turbine Log</span><span class="op-tag blue">Autonomous</span></div>
+        <div class="op-desc">Blade cracks, erosion, ice, oil leak, lightning marks. Close-proximity autonomous orbit around each turbine. Per-turbine maintenance history archived.</div>
+        <div class="op-tags"><span class="tag tag-b">Per-Turbine Log</span><span class="tag tag-g">Autonomous Orbit</span></div>
       </div>
-
-      <div class="op-card" style="--card-color:#F0D878;">
+      <div class="op-card" style="--oc:#F0D878;">
         <div class="op-icon">☀️</div>
         <div class="op-title">Solar Farm Inspection</div>
-        <div class="op-desc">Hot spot detection, broken panels, soiling, shading, delamination, bypass diode failure. Lawnmower coverage pattern across entire farm. Output includes panel-level heatmap and maintenance priority ranking.</div>
-        <div class="op-tags"><span class="op-tag">6 Fault Types</span><span class="op-tag">Heatmap</span><span class="op-tag blue">Lawnmower Route</span></div>
+        <div class="op-desc">Hot spots, broken panels, soiling, delamination. Lawnmower coverage pattern. Panel-level heatmap output with priority-ranked maintenance list.</div>
+        <div class="op-tags"><span class="tag tag-y">Heatmap Output</span><span class="tag tag-b">Lawnmower Route</span></div>
       </div>
-
-      <div class="op-card" style="--card-color:#4acc7a;">
+      <div class="op-card" style="--oc:#4acc7a;">
         <div class="op-icon">🔴</div>
         <div class="op-title">Search &amp; Rescue (SAR)</div>
-        <div class="op-desc">Swarm-based area sweep for missing persons. AI detects body heat signatures, debris, signal mirrors, and survivors. Every detection GPS-tagged and relayed to rescue teams instantly. Operates in low-light conditions.</div>
-        <div class="op-tags"><span class="op-tag green">Thermal AI</span><span class="op-tag">Swarm Sweep</span><span class="op-tag blue">Live Relay</span></div>
+        <div class="op-desc">Swarm area sweep for missing persons. Thermal, debris, survivor detection. Every hit GPS-tagged and relayed to rescue teams in real-time. Low-light capable.</div>
+        <div class="op-tags"><span class="tag tag-g">Thermal AI</span><span class="tag tag-y">Swarm Sweep</span><span class="tag tag-b">Live Relay</span></div>
       </div>
-
-      <div class="op-card" style="--card-color:#5a9fd4;">
+      <div class="op-card" style="--oc:#5a9fd4;">
         <div class="op-icon">👷</div>
         <div class="op-title">Construction Site Safety</div>
-        <div class="op-desc">Continuous monitoring for PPE violations (no helmet, no vest), restricted zone entries, heavy equipment movement, and structural progress. Daily compliance report generated automatically for site managers.</div>
-        <div class="op-tags"><span class="op-tag blue">PPE Detection</span><span class="op-tag">Zone Rules</span><span class="op-tag">Daily Report</span></div>
+        <div class="op-desc">PPE violations (helmet, vest), restricted zone entries, heavy equipment tracking, structural progress. Daily compliance report auto-generated for site managers.</div>
+        <div class="op-tags"><span class="tag tag-b">PPE Detection</span><span class="tag tag-y">Zone Rules</span><span class="tag tag-g">Daily Report</span></div>
       </div>
-
-      <div class="op-card" style="--card-color:#9c27b0;">
+      <div class="op-card" style="--oc:#9c27b0;">
         <div class="op-icon">🔧</div>
         <div class="op-title">Pipeline Inspection</div>
-        <div class="op-desc">Leak detection, corrosion identification, ground subsidence, unauthorized excavation near pipeline, vegetation damage. Linear route following with automated return and incident flagging.</div>
-        <div class="op-tags"><span class="op-tag">5 Hazard Types</span><span class="op-tag green">Linear Route</span><span class="op-tag blue">Incident Flag</span></div>
+        <div class="op-desc">Leak, corrosion, ground subsidence, unauthorized excavation near pipeline. Linear autonomous route. Immediate incident flag with coordinates.</div>
+        <div class="op-tags"><span class="tag tag-y">5 Hazard Types</span><span class="tag tag-g">Linear Auto</span><span class="tag tag-b">GPS Incident Log</span></div>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- ═══ TACTICAL AWARENESS ENGINE ═══ -->
+<!-- ═══ TAE ═══ -->
 <div class="section">
   <div class="wrap">
-    <div class="sec-label">AI Co-Pilot</div>
+    <div class="sec-eyebrow">AI Co-Pilot</div>
     <div class="sec-title">Tactical Awareness Engine</div>
-    <div class="sec-sub">The TAE monitors every drone continuously across 5 risk dimensions, every 500ms. It doesn't wait for the operator to notice a problem — <strong>it acts first.</strong></div>
-
-    <div class="tae-layout">
-      <div class="tae-panel">
-        <div class="tae-panel-title">
-          <div class="live-dot" style="color:#4acc7a;">Live Risk Score</div>
-          — Drone Alpha
-        </div>
+    <div class="sec-body">Monitors every drone across 5 risk dimensions, <strong>every 500ms</strong>. Calculates RTL windows, predicts failures, and alerts before the operator notices. Acts as a co-pilot that never blinks.</div>
+    <div class="tae-grid">
+      <div class="tae-box">
+        <div class="tae-box-title"><div class="live">Risk Score</div>&nbsp;— Drone Alpha</div>
         <div class="risk-bars">
-          <div class="risk-row">
-            <div class="risk-label"><span>Battery</span><span style="color:#2dd462;">88% · Stable</span></div>
-            <div class="risk-bar-bg"><div class="risk-bar-fill risk-fill-green"></div></div>
+          <div class="rb-row">
+            <div class="rb-head"><span>Battery</span><span style="color:#2dd462;">88% · Stable</span></div>
+            <div class="rb-track"><div class="rb-fill fill-g" style="width:88%;"></div></div>
           </div>
-          <div class="risk-row">
-            <div class="risk-label"><span>Navigation</span><span style="color:#ff9800;">Degraded</span></div>
-            <div class="risk-bar-bg"><div class="risk-bar-fill risk-fill-orange"></div></div>
+          <div class="rb-row">
+            <div class="rb-head"><span>Navigation</span><span style="color:#ff9800;">Degraded</span></div>
+            <div class="rb-track"><div class="rb-fill fill-o" style="width:58%;"></div></div>
           </div>
-          <div class="risk-row">
-            <div class="risk-label"><span>Comms Link</span><span style="color:#ff4444;">Weak · 23%</span></div>
-            <div class="risk-bar-bg"><div class="risk-bar-fill risk-fill-red"></div></div>
+          <div class="rb-row">
+            <div class="rb-head"><span>Comms Link</span><span style="color:#ff4444;animation:blink 1.5s infinite;">Weak — 23%</span></div>
+            <div class="rb-track"><div class="rb-fill fill-r" style="width:23%;"></div></div>
           </div>
-          <div class="risk-row">
-            <div class="risk-label"><span>Mechanical</span><span style="color:#4acc7a;">OK</span></div>
-            <div class="risk-bar-bg"><div class="risk-bar-fill risk-fill-blue"></div></div>
+          <div class="rb-row">
+            <div class="rb-head"><span>Mechanical</span><span style="color:#4acc7a;">OK</span></div>
+            <div class="rb-track"><div class="rb-fill fill-b" style="width:92%;"></div></div>
           </div>
-          <div class="risk-row">
-            <div class="risk-label"><span>Environment</span><span style="color:#C9A84C;">Wind 7m/s</span></div>
-            <div class="risk-bar-bg"><div class="risk-bar-fill risk-fill-yellow"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tae-panel">
-        <div class="tae-panel-title">Active Alerts</div>
-        <div class="alert-list">
-          <div class="alert-item crit">
-            <div class="al-icon">🔴</div>
-            <div class="al-text"><strong>CRITICAL — Link Weak</strong>Signal below 25%. RTL recommended within 90 seconds.</div>
-          </div>
-          <div class="alert-item warn">
-            <div class="al-icon">🟡</div>
-            <div class="al-text"><strong>WARNING — Navigation Degraded</strong>GPS HDOP elevated. EKF variance increasing. Reduce altitude.</div>
-          </div>
-          <div class="alert-item warn">
-            <div class="al-icon">🟠</div>
-            <div class="al-text"><strong>RTL Window — 6.2 min remaining</strong>Current battery supports mission for 6.2 more minutes before mandatory return.</div>
-          </div>
-          <div class="alert-item info">
-            <div class="al-icon">🔵</div>
-            <div class="al-text"><strong>INFO — Wind 7m/s NE</strong>Headwind on return leg. RTL time +1.8 min vs outbound.</div>
+          <div class="rb-row">
+            <div class="rb-head"><span>Environment</span><span style="color:#C9A84C;">Wind 7 m/s</span></div>
+            <div class="rb-track"><div class="rb-fill fill-y" style="width:72%;"></div></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ SWARM ═══ -->
-<div class="section">
-  <div class="wrap">
-    <div class="sec-label">Multi-UAV Coordination</div>
-    <div class="sec-title">Swarm Intelligence</div>
-    <div class="sec-sub">One operator, many drones. The swarm system assigns roles, maintains formations, coordinates coverage, and redistributes tasks automatically when any drone fails or returns to dock.</div>
-
-    <div class="swarm-layout">
-      <div>
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3a5a78;margin-bottom:14px;">Formation Patterns</div>
-        <div class="formation-grid">
-          <div class="formation-card">
-            <svg viewBox="0 0 80 60">
-              <circle cx="10" cy="30" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="30" cy="30" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="50" cy="30" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="70" cy="30" r="5" fill="#C9A84C" opacity=".9"/>
-              <line x1="10" y1="30" x2="70" y2="30" stroke="rgba(201,168,76,.3)" stroke-width="1" stroke-dasharray="4,3"/>
-            </svg>
-            <h4>Line</h4><p>Corridor scan, linear patrol</p>
+      <div class="tae-box">
+        <div class="tae-box-title">Active Alerts</div>
+        <div class="alerts">
+          <div class="alert-item al-crit">
+            <div class="ai-icon">🔴</div>
+            <div><strong>CRITICAL — Link Weak</strong><p>Signal 23%. RTL recommended within 90 seconds or mission infeasible.</p></div>
           </div>
-          <div class="formation-card">
-            <svg viewBox="0 0 80 60">
-              <circle cx="40" cy="10" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="20" cy="35" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="60" cy="35" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="8" cy="55" r="5" fill="#C9A84C" opacity=".5"/>
-              <circle cx="72" cy="55" r="5" fill="#C9A84C" opacity=".5"/>
-              <line x1="40" y1="10" x2="20" y2="35" stroke="rgba(201,168,76,.3)" stroke-width="1" stroke-dasharray="4,3"/>
-              <line x1="40" y1="10" x2="60" y2="35" stroke="rgba(201,168,76,.3)" stroke-width="1" stroke-dasharray="4,3"/>
-            </svg>
-            <h4>V-Shape</h4><p>Wide area coverage, advance scan</p>
+          <div class="alert-item al-warn">
+            <div class="ai-icon">🟡</div>
+            <div><strong>WARNING — Navigation Degraded</strong><p>GPS HDOP elevated. EKF variance rising. Reduce altitude advised.</p></div>
           </div>
-          <div class="formation-card">
-            <svg viewBox="0 0 80 60">
-              <circle cx="40" cy="8" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="72" cy="30" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="60" cy="55" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="20" cy="55" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="8" cy="30" r="5" fill="#C9A84C" opacity=".9"/>
-              <circle cx="40" cy="30" r="4" fill="rgba(201,168,76,.2)" stroke="rgba(201,168,76,.3)" stroke-width="1"/>
-              <ellipse cx="40" cy="32" rx="28" ry="22" fill="none" stroke="rgba(201,168,76,.2)" stroke-width="1" stroke-dasharray="4,3"/>
-            </svg>
-            <h4>Circle</h4><p>Point surveillance, perimeter guard</p>
+          <div class="alert-item al-warn">
+            <div class="ai-icon">🟠</div>
+            <div><strong>RTL Window — 6.2 min</strong><p>Battery supports 6.2 more mission minutes before mandatory return.</p></div>
           </div>
-          <div class="formation-card">
-            <svg viewBox="0 0 80 60">
-              <circle cx="20" cy="15" r="4" fill="#C9A84C" opacity=".9"/>
-              <circle cx="40" cy="15" r="4" fill="#C9A84C" opacity=".9"/>
-              <circle cx="60" cy="15" r="4" fill="#C9A84C" opacity=".9"/>
-              <circle cx="20" cy="35" r="4" fill="#C9A84C" opacity=".9"/>
-              <circle cx="40" cy="35" r="4" fill="#C9A84C" opacity=".9"/>
-              <circle cx="60" cy="35" r="4" fill="#C9A84C" opacity=".9"/>
-              <circle cx="20" cy="55" r="4" fill="#C9A84C" opacity=".5"/>
-              <circle cx="40" cy="55" r="4" fill="#C9A84C" opacity=".5"/>
-              <circle cx="60" cy="55" r="4" fill="#C9A84C" opacity=".5"/>
-            </svg>
-            <h4>Grid</h4><p>Full area mapping, large-scale survey</p>
+          <div class="alert-item al-info">
+            <div class="ai-icon">🔵</div>
+            <div><strong>INFO — Headwind NE 7 m/s</strong><p>Return leg +1.8 min vs outbound. RTL window adjusted automatically.</p></div>
           </div>
-        </div>
-      </div>
-
-      <div class="swarm-stats">
-        <div class="swarm-stat-card">
-          <div class="big">10+</div>
-          <p>Simultaneous drones manageable from a single GCS screen with per-drone health, battery, and task status.</p>
-        </div>
-        <div class="swarm-stat-card">
-          <div style="display:flex;gap:5px;margin-bottom:8px;">
-            <span class="drone-dot active"></span>
-            <span class="drone-dot active"></span>
-            <span class="drone-dot active"></span>
-            <span class="drone-dot" style="background:#ff9800;animation:pulse 1s .3s ease-in-out infinite;"></span>
-            <span class="drone-dot" style="background:#ff4444;opacity:.4;"></span>
-          </div>
-          <p>If a drone goes critical or is lost, the swarm <strong style="color:#c0d8ee;">automatically re-distributes coverage</strong> — no operator input needed.</p>
-        </div>
-        <div class="swarm-stat-card">
-          <div class="big" style="font-size:20px;color:#4acc7a;">AI Assigned Roles</div>
-          <p>Inspector · Overwatch · Patrol · Support — AI Commander assigns roles based on mission objective and drone health.</p>
         </div>
       </div>
     </div>
@@ -514,68 +644,54 @@ body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-heigh
 <!-- ═══ FLIGHTHUB ═══ -->
 <div class="section">
   <div class="wrap">
-    <div class="sec-label">SaaS Product</div>
+    <div class="sec-eyebrow">SaaS Analytics Platform</div>
     <div class="sec-title">BBA FlightHub</div>
-    <div class="sec-sub">Upload your flight logs — FlightHub does the rest. <strong>AI-powered diagnostics, 3D replay, fleet health tracking</strong> for operators who can't afford unexpected downtime.</div>
-
+    <div class="sec-body">Upload a flight log — FlightHub does the rest. <strong>AI-generated diagnostics, 3D replay, fleet health tracking.</strong> Catches failures before they happen. Investigates incidents in minutes, not hours.</div>
     <div class="fh-layout">
-      <!-- MOCK SCREEN -->
-      <div class="fh-screen">
-        <div class="fh-screen-bar">
-          <div class="fh-dot-r"></div><div class="fh-dot-y"></div><div class="fh-dot-g"></div>
-          <span class="fh-screen-title">FlightHub · Fleet Dashboard</span>
-          <span style="margin-left:auto;" class="live-dot" style="font-size:9px;">Live</span>
+      <div class="fh-mock">
+        <div class="fh-bar">
+          <div class="fh-dot" style="background:#ff5f57;"></div>
+          <div class="fh-dot" style="background:#ffbd2e;"></div>
+          <div class="fh-dot" style="background:#28ca41;"></div>
+          <span class="fh-bar-title">FlightHub · Fleet Dashboard</span>
+          <div class="live" style="font-size:9px;">Live</div>
         </div>
-        <div class="metric-row">
-          <div class="mini-metric"><div class="v">247</div><div class="l">Flights</div></div>
-          <div class="mini-metric"><div class="v">18</div><div class="l">Drones</div></div>
-          <div class="mini-metric"><div class="v" style="color:#ff9800;">3</div><div class="l">Warnings</div></div>
-        </div>
-        <div style="font-size:10px;color:#2a4060;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Motor Health — Drone #7</div>
-        <div class="bar-chart">
-          <div class="bc-row"><span>Motor 1</span><div class="bc-track"><div class="bc-fill" style="width:94%;"></div></div><span class="bc-val">94%</span></div>
-          <div class="bc-row"><span>Motor 2</span><div class="bc-track"><div class="bc-fill" style="width:91%;"></div></div><span class="bc-val">91%</span></div>
-          <div class="bc-row"><span>Motor 3</span><div class="bc-track"><div class="bc-fill" style="width:72%;background:linear-gradient(90deg,#ff9800,#ffb74d);"></div></div><span class="bc-val" style="color:#ff9800;">72%</span></div>
-          <div class="bc-row"><span>Motor 4</span><div class="bc-track"><div class="bc-fill" style="width:89%;"></div></div><span class="bc-val">89%</span></div>
-        </div>
-        <div style="background:rgba(255,152,0,.08);border:1px solid rgba(255,152,0,.2);border-radius:6px;padding:10px 12px;margin-top:12px;font-size:11.5px;color:#ffa940;">
-          ⚠️ Motor 3 imbalance detected. Bearing wear likely. Schedule maintenance within 3 flights.
+        <div class="fh-body">
+          <div class="fh-metrics">
+            <div class="fh-m"><div class="v">247</div><div class="l">Flights</div></div>
+            <div class="fh-m"><div class="v">18</div><div class="l">Drones</div></div>
+            <div class="fh-m"><div class="v" style="color:#ff9800;">3</div><div class="l">Warnings</div></div>
+          </div>
+          <div class="fh-section-label">Motor Health — Drone #7</div>
+          <div class="motor-bars">
+            <div class="mb-row"><span>Motor 1</span><div class="mb-track"><div class="mb-fill fill-g" style="width:94%;"></div></div><span style="color:#2dd462;font-size:10.5px;margin-left:6px;">94%</span></div>
+            <div class="mb-row"><span>Motor 2</span><div class="mb-track"><div class="mb-fill fill-g" style="width:91%;"></div></div><span style="color:#2dd462;font-size:10.5px;margin-left:6px;">91%</span></div>
+            <div class="mb-row"><span>Motor 3</span><div class="mb-track"><div class="mb-fill fill-o" style="width:72%;"></div></div><span style="color:#ff9800;font-size:10.5px;margin-left:6px;">72%</span></div>
+            <div class="mb-row"><span>Motor 4</span><div class="mb-track"><div class="mb-fill fill-g" style="width:89%;"></div></div><span style="color:#2dd462;font-size:10.5px;margin-left:6px;">89%</span></div>
+          </div>
+          <div class="fh-warn">⚠️ Motor 3 imbalance detected. Bearing wear likely. Schedule maintenance within 3 flights.</div>
         </div>
       </div>
-
-      <!-- FEATURES -->
       <div class="fh-features">
         <div class="fh-feat">
-          <div class="fh-feat-icon">🔍</div>
-          <div>
-            <h4>Before Failures Happen</h4>
-            <p>Motor imbalance, battery degradation, and vibration anomalies flagged from log data — with specific maintenance recommendations.</p>
-          </div>
+          <div class="fh-feat-icon">🔮</div>
+          <div><h4>Failure Prediction</h4><p>Motor imbalance, battery degradation, and vibration anomalies detected from log patterns — before a crash, not after.</p></div>
         </div>
         <div class="fh-feat">
           <div class="fh-feat-icon">🤖</div>
-          <div>
-            <h4>AI Incident Investigation</h4>
-            <p>Ask in plain language: "why did the drone land early?" — get an immediate root cause analysis. Investigation time: minutes, not hours.</p>
-          </div>
+          <div><h4>AI Incident Investigation</h4><p>Ask in plain language: "why did the drone land early?" Immediate root cause answer. Hours → minutes.</p></div>
         </div>
         <div class="fh-feat">
           <div class="fh-feat-icon">🌐</div>
-          <div>
-            <h4>3D Flight Replay</h4>
-            <p>Full 3D replay of any flight with synchronized telemetry. Scrub to any moment and see what the drone's sensors recorded.</p>
-          </div>
+          <div><h4>3D Flight Replay</h4><p>Scrub through any flight in full 3D. Synchronized telemetry — see what every sensor recorded at any moment.</p></div>
         </div>
         <div class="fh-feat">
-          <div class="fh-feat-icon">🏢</div>
-          <div>
-            <h4>Fleet Roles & Access</h4>
-            <p>Admin, Pilot, Viewer, Maintenance roles. Multi-drone registry, maintenance logs, compliance audit trail — all automatic.</p>
-          </div>
+          <div class="fh-feat-icon">👥</div>
+          <div><h4>Fleet Roles & Compliance</h4><p>Admin, Pilot, Viewer, Maintenance roles. Multi-drone registry. Full audit trail auto-generated every flight.</p></div>
         </div>
-        <div style="background:var(--gold-dim);border:1px solid rgba(201,168,76,.2);border-radius:8px;padding:12px 16px;text-align:center;">
-          <div style="font-size:12px;color:var(--gold);font-weight:600;">Live at bbaflighthub.com</div>
-          <div style="font-size:11px;color:#3a5a78;margin-top:3px;">ArduPilot .bin · PX4 .ulg · Up to 500MB</div>
+        <div class="fh-live-badge">
+          <div class="b">Live at bbaflighthub.com</div>
+          <div class="s">ArduPilot .bin &nbsp;·&nbsp; PX4 .ulg &nbsp;·&nbsp; Up to 500 MB</div>
         </div>
       </div>
     </div>
@@ -583,70 +699,67 @@ body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-heigh
 </div>
 
 <!-- ═══ TRUSTED BY ═══ -->
-<div class="section" style="padding:48px 0;">
+<div class="section" style="padding-top:48px;padding-bottom:48px;">
   <div class="wrap">
-    <div class="sec-label" style="text-align:center;margin-bottom:6px;">Trusted By</div>
-    <div style="font-size:12px;color:#2a4060;text-align:center;margin-bottom:32px;text-transform:uppercase;letter-spacing:2px;">Organizations we work with</div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;">
-      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px 30px;text-align:center;min-width:180px;">
-        <div style="font-size:22px;margin-bottom:8px;">🇹🇷</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff;letter-spacing:.5px;">T.C. Milli Savunma</div>
-        <div style="font-size:11px;color:#3a5a78;margin-top:2px;">Bakanlığı</div>
+    <div class="sec-eyebrow" style="text-align:center;margin-bottom:6px;">Trusted By</div>
+    <div class="trusted">
+      <div class="trust-card">
+        <div class="tc-flag">🇹🇷</div>
+        <div class="tc-name">T.C. Milli Savunma</div>
+        <div class="tc-sub">Bakanlığı</div>
       </div>
-      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px 30px;text-align:center;min-width:180px;">
-        <div style="font-size:22px;margin-bottom:8px;">🇦🇪</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff;letter-spacing:.5px;">Dubai Municipality</div>
-        <div style="font-size:11px;color:#3a5a78;margin-top:2px;">United Arab Emirates</div>
+      <div class="trust-card">
+        <div class="tc-flag">🇦🇪</div>
+        <div class="tc-name">Dubai Municipality</div>
+        <div class="tc-sub">United Arab Emirates</div>
       </div>
-      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px 30px;text-align:center;min-width:180px;">
-        <div style="font-size:22px;margin-bottom:8px;">🏛️</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff;letter-spacing:.5px;">İzmir Büyükşehir</div>
-        <div style="font-size:11px;color:#3a5a78;margin-top:2px;">Belediyesi</div>
+      <div class="trust-card">
+        <div class="tc-flag">🏛️</div>
+        <div class="tc-name">İzmir Büyükşehir</div>
+        <div class="tc-sub">Belediyesi</div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- ═══ PARTNERSHIP ═══ -->
-<div class="section">
+<div class="section" style="padding-top:48px;">
   <div class="wrap">
-    <div class="sec-label">How We Work Together</div>
+    <div class="sec-eyebrow">How We Work Together</div>
     <div class="sec-title">Partnership Models</div>
-
-    <div class="partner-cards">
+    <div class="partner-grid">
       <div class="partner-card">
         <h3>OEM Software License</h3>
-        <p>Embed our AI stack into your drone platform. Full white-label — your brand, your product. Per-unit royalty or annual fleet license. We've built for production, not prototypes.</p>
+        <p>Embed our AI stack into your drone platform. Full white-label. Per-unit royalty or annual fleet license. Your hardware, our intelligence.</p>
         <div class="outcome">→ Add AI without building an AI team.</div>
       </div>
       <div class="partner-card">
         <h3>Custom Development</h3>
-        <p>Specific use case, specific customer. We scope, build, and deliver. Fixed project or ongoing retainer. Production systems deployed for government and industrial clients.</p>
+        <p>Specific use case, specific customer. Fixed project or retainer. Production systems deployed for government and industrial clients.</p>
         <div class="outcome">→ Exact solution, not a product compromise.</div>
       </div>
       <div class="partner-card">
         <h3>SaaS / API Access</h3>
-        <p>FlightHub fleet analytics and Smart Vision algorithms available as API. Integrate into your existing platform, dashboard, or operations center. Per-call or subscription.</p>
+        <p>FlightHub analytics and Smart Vision algorithms via API. Integrate into your existing platform or operations center.</p>
         <div class="outcome">→ Intelligence layer for your existing product.</div>
       </div>
       <div class="partner-card">
         <h3>Regional Joint Venture</h3>
-        <p>We bring deep AI software. You bring market access and distribution. Co-develop and sell solutions in your territory. Open to serious discussions with the right partner.</p>
+        <p>We bring AI software depth. You bring market access. Co-develop and sell in your territory. Open to serious discussions.</p>
         <div class="outcome">→ Shared upside, complementary strengths.</div>
       </div>
     </div>
 
-    <!-- CONTACT -->
-    <div class="contact-section">
-      <div class="contact-left">
+    <div class="contact-bar">
+      <div>
         <h2>Let's Talk</h2>
-        <p>We respond within 24 hours. Happy to arrange a live demo.</p>
+        <div class="sub">We respond within 24 hours. Happy to arrange a live demo.</div>
       </div>
-      <div class="contact-items">
-        <div class="contact-item"><span class="ci-icon">✉️</span> serdarbatkan@bbateknoloji.com</div>
-        <div class="contact-item"><span class="ci-icon">🌐</span> www.bbaflighthub.com</div>
-        <div class="contact-item"><span class="ci-icon">💼</span> linkedin.com/in/serdar-batkan</div>
-        <div class="contact-item"><span class="ci-icon">📍</span> İzmir, Türkiye</div>
+      <div class="ci-list">
+        <div class="ci">✉️ &nbsp;serdarbatkan@bbateknoloji.com</div>
+        <div class="ci">🌐 &nbsp;www.bbaflighthub.com</div>
+        <div class="ci">💼 &nbsp;linkedin.com/in/serdar-batkan</div>
+        <div class="ci">📍 &nbsp;İzmir, Türkiye</div>
       </div>
     </div>
 
