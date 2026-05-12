@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BBA Teknoloji — Drone AI & Software Capabilities</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#C9A84C;--gold2:#F0D878;--navy:#060e1f;--navy2:#0b1628;--blue:#1a3a5c;}
+body{background:var(--navy);color:#fff;font-family:'Inter',sans-serif;line-height:1.6;}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#060e1f 0%,#0d1f38 100%);border-bottom:1px solid rgba(201,168,76,.2);padding:40px 48px 36px;}
+.header-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.logo{font-family:'Rajdhani',sans-serif;font-size:48px;font-weight:700;letter-spacing:8px;color:#fff;}
+.logo em{font-style:normal;color:var(--gold);}
+.header-right{text-align:right;}
+.doc-title{font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+.doc-sub{font-size:13px;color:#4a6a88;}
+
+/* HERO BAND */
+.hero-band{background:linear-gradient(90deg,rgba(201,168,76,.08),rgba(58,143,213,.06));border-top:1px solid rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.1);padding:28px 48px;}
+.hero-band-inner{max-width:900px;margin:0 auto;}
+.hero-band p{font-size:15px;color:#8aaac8;line-height:1.8;max-width:700px;}
+.hero-band strong{color:#fff;font-weight:600;}
+
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:48px;}
+
+/* SECTION */
+.section{margin-bottom:52px;}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid rgba(201,168,76,.12);}
+.section-num{font-family:'Rajdhani',sans-serif;font-size:11px;color:var(--gold);letter-spacing:3px;opacity:.6;}
+.section-title{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:1px;}
+.section-icon{font-size:22px;}
+
+/* CAPABILITY CARDS */
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+.cap-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:18px 20px;transition:border-color .2s;}
+.cap-card:hover{border-color:rgba(201,168,76,.25);}
+.cap-card-title{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.cap-card-title .ic{font-size:15px;}
+.cap-card p{font-size:12px;color:#4a6a88;line-height:1.6;}
+.tag{display:inline-block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-top:8px;margin-right:4px;}
+.tag-gold{background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.2);}
+.tag-blue{background:rgba(58,143,213,.1);color:#5a9fd4;border:1px solid rgba(58,143,213,.2);}
+.tag-green{background:rgba(45,212,100,.08);color:#4acc7a;border:1px solid rgba(45,212,100,.2);}
+
+/* VISION GRID */
+.vision-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.vision-item{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.vision-item .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+.vision-item p{font-size:12px;color:#6a8aaa;line-height:1.4;}
+.vision-item strong{display:block;font-size:12.5px;color:#c0d4e8;font-weight:500;margin-bottom:2px;}
+
+/* PLATFORM TABLE */
+.platform-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px;}
+.p-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;}
+.p-card-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;}
+.p-card p{font-size:11.5px;color:#4a6a88;line-height:1.5;}
+
+/* HIGHLIGHT BOX */
+.highlight{background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(58,143,213,.04));border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:24px 28px;margin-bottom:20px;}
+.highlight h3{font-size:14px;font-weight:600;color:var(--gold);margin-bottom:10px;letter-spacing:.5px;}
+.highlight ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.highlight ul li{font-size:12.5px;color:#7a9ab8;padding-left:16px;position:relative;}
+.highlight ul li::before{content:'→';position:absolute;left:0;color:var(--gold);opacity:.6;font-size:11px;}
+
+/* INTEGRATIONS */
+.int-row{display:flex;flex-wrap:wrap;gap:10px;}
+.int-badge{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:8px 14px;font-size:12px;color:#8aaac8;font-weight:500;}
+
+/* USE CASES */
+.use-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.use-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:18px 20px;}
+.use-card h4{font-size:13px;font-weight:600;color:#c0d8ee;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.use-card ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.use-card ul li{font-size:11.5px;color:#4a6a88;padding-left:12px;position:relative;}
+.use-card ul li::before{content:'•';position:absolute;left:0;color:var(--gold);opacity:.5;}
+
+/* CONTACT */
+.contact-bar{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(10,102,194,.06));border:1px solid rgba(201,168,76,.15);border-radius:12px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.contact-left h3{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:#fff;letter-spacing:1px;margin-bottom:4px;}
+.contact-left p{font-size:12.5px;color:#4a6a88;}
+.contact-items{display:flex;flex-direction:column;gap:8px;}
+.contact-item{font-size:13px;color:#8aaac8;display:flex;align-items:center;gap:8px;}
+.contact-item span{color:var(--gold);font-size:14px;}
+
+/* FOOTER */
+.footer{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:5px;color:rgba(201,168,76,.4);}
+.footer p{font-size:10.5px;color:#1a2a3a;}
+
+@media print{
+  body{background:#fff;color:#000;}
+  .header{background:#f5f5f5;border-bottom:1px solid #ddd;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <div class="logo">BB<em>A</em></div>
+      <div style="font-size:11px;letter-spacing:2px;color:#3a5a78;text-transform:uppercase;margin-top:4px;">Teknoloji · İzmir, Türkiye</div>
+    </div>
+    <div class="header-right">
+      <div class="doc-title">Capability Brief</div>
+      <div class="doc-sub">Drone AI Software & Autonomous Systems</div>
+      <div style="font-size:11px;color:#2a3a50;margin-top:4px;">2026 · Confidential</div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero-band">
+  <div class="hero-band-inner">
+    <p>BBA Teknoloji develops <strong>hardware-agnostic AI software</strong> for autonomous drone operations — from computer vision and swarm intelligence to LLM-powered ground control and real-time risk analysis. Our platform runs on <strong>ArduPilot and PX4</strong>, integrates with any drone hardware, and is deployable for defence, industrial, and commercial applications.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- 1. CORE PLATFORM -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-icon">🛰️</div>
+      <div class="section-title">BBA AI Companion — Ground Control Platform</div>
+    </div>
+
+    <div class="highlight">
+      <h3>What makes it different</h3>
+      <ul>
+        <li>Natural language drone control via LLM — operators issue commands in plain text, system translates to MAVLink</li>
+        <li>Tactical Awareness Engine (TAE) — real-time compound risk scoring every 500ms across battery, navigation, mechanical, environmental axes</li>
+        <li>AI Co-Pilot — proactive alerts before the operator notices a problem</li>
+        <li>Hardware-agnostic — same software runs on ArduPilot and PX4 vehicles simultaneously</li>
+      </ul>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🤖</span> LLM Flight Control</div>
+        <p>Natural language commands translated to MAVLink in real-time. "Go to waypoint 3 and hover at 40m" executes instantly.</p>
+        <span class="tag tag-gold">Gemini 2.5</span>
+        <span class="tag tag-blue">Mistral 7B Offline</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">⚡</span> Tactical Awareness Engine</div>
+        <p>Multi-variate risk analysis: battery degradation curve, EKF variance, vibration FFT, wind load, GPS satellite trends.</p>
+        <span class="tag tag-gold">500ms refresh</span>
+        <span class="tag tag-green">RTL Window Calc</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🗺️</span> Mission Planning</div>
+        <p>Full waypoint editor, survey grid generator, lawnmower pattern, geofence enforcement, pre-flight safety checks.</p>
+        <span class="tag tag-blue">ArduPilot</span>
+        <span class="tag tag-blue">PX4</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🔒</span> Geofencing</div>
+        <p>Multi-zone geofence with inclusion/exclusion areas, airspace validation, automatic RTL on boundary breach.</p>
+        <span class="tag tag-gold">Real-time</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">📡</span> Multi-Link Management</div>
+        <p>MAVLink over UDP, TCP, serial. Simultaneous multi-vehicle connections with per-vehicle state isolation.</p>
+        <span class="tag tag-blue">MAVLink v2</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">📱</span> Remote Access</div>
+        <p>Secure remote GCS access, mobile companion app, Telegram integration for operator alerts.</p>
+        <span class="tag tag-green">WebSocket</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SWARM -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-icon">🐝</div>
+      <div class="section-title">Swarm Intelligence & Multi-UAV Management</div>
+    </div>
+
+    <div class="platform-row">
+      <div class="p-card">
+        <div class="p-card-title">Formation Control</div>
+        <p>Line, V-shape, circle, grid formations. Real-time recalculation. Automatic position assignment per drone ID.</p>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Group Commands</div>
+        <p>Simultaneous ARM, DISARM, RTL, LAND, mode changes across entire fleet with per-drone health gating.</p>
+      </div>
+      <div class="p-card">
+        <div class="p-card-title">Survey Area Division</div>
+        <p>Polygon input automatically divided into drone-specific lawnmower strips. Scalable to 10+ vehicles.</p>
+      </div>
+    </div>
+
+    <div class="cap-grid" style="margin-top:12px;">
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">👁️</span> Swarm VLM Scanner</div>
+        <p>Each drone in swarm runs a Vision-Language Model scan on its sector. Results aggregated centrally for threat assessment.</p>
+        <span class="tag tag-gold">Per-drone AI</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🏥</span> Health Monitoring</div>
+        <p>Per-drone health status (HEALTHY / WARNING / CRITICAL / LOST), battery alerts, GPS degradation detection across fleet.</p>
+        <span class="tag tag-green">Real-time</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">📋</span> Task Assignment</div>
+        <p>Define mission tasks (SURVEY, PATROL, OBSERVATION, TRANSPORT), assign to drone groups, track completion status.</p>
+        <span class="tag tag-blue">Group-based</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. COMPUTER VISION -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-icon">🔭</div>
+      <div class="section-title">Aerosmart Vision — AI Computer Vision Platform</div>
+    </div>
+
+    <div class="highlight">
+      <h3>Platform overview</h3>
+      <ul>
+        <li>30+ domain-specific detection algorithms, each optimized for aerial drone perspective</li>
+        <li>Real-time processing pipeline with event-driven alerting</li>
+        <li>Zone-based policy engine — define restricted areas, count thresholds, intrusion rules</li>
+        <li>Multi-source input: live drone video, recorded footage, satellite imagery</li>
+        <li>AI review layer — LLM summarizes detections for operator briefing</li>
+      </ul>
+    </div>
+
+    <div class="vision-grid">
+      <div class="vision-item"><div class="dot"></div><div><strong>Fire & Smoke Detection</strong><p>Early wildfire identification from aerial footage</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>People Counting</strong><p>Crowd density analysis, zone occupancy tracking</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Restricted Zone Intrusion</strong><p>Real-time perimeter breach alerts</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Structural Crack Detection</strong><p>Infrastructure inspection automation</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Boat / Vessel Detection</strong><p>Maritime surveillance and tracking</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Change Detection</strong><p>Before/after site comparison for construction monitoring</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Illegal Structure Detection</strong><p>Unauthorized construction identification</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Water Quality Analysis</strong><p>Anomaly detection in water bodies</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Coastal Inspection</strong><p>Shoreline monitoring, rip current detection</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Vehicle Detection</strong><p>Beach/restricted area vehicle tracking</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Asset Monitoring</strong><p>Equipment and infrastructure status tracking</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Litter Detection</strong><p>Environmental compliance monitoring</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Parking Analysis</strong><p>Occupancy mapping, utilization statistics</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Vegetation Damage</strong><p>Agricultural and forestry health assessment</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Progress Monitoring</strong><p>Construction site progress tracking over time</p></div></div>
+      <div class="vision-item"><div class="dot"></div><div><strong>Swimming Restricted Zones</strong><p>Beach safety enforcement automation</p></div></div>
+    </div>
+  </div>
+
+  <!-- 4. TRACKING -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-icon">🎯</div>
+      <div class="section-title">Real-Time Object Tracking</div>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🚶</span> Person Tracker</div>
+        <p>Multi-person tracking with persistent IDs across frames. Re-identification on occlusion. Trajectory analysis.</p>
+        <span class="tag tag-gold">C++ Backend</span>
+        <span class="tag tag-blue">YOLOv8</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🚗</span> Vehicle Tracker</div>
+        <p>Ground vehicle tracking from aerial perspective. Speed estimation, direction classification, zone crossing events.</p>
+        <span class="tag tag-gold">Real-time</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🔁</span> IOU Tracker</div>
+        <p>High-performance multi-object tracker using Intersection-over-Union matching. Low latency, no GPU required.</p>
+        <span class="tag tag-green">CPU-capable</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🧭</span> Motion Analysis</div>
+        <p>Object velocity, heading, acceleration. Anomalous motion detection. Crowd flow direction analysis.</p>
+        <span class="tag tag-blue">Analytics</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. AUTONOMOUS NAV -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-icon">🧠</div>
+      <div class="section-title">Autonomous Navigation</div>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">📍</span> GPS-Denied Indoor Nav</div>
+        <p>RTAB-Map VIO with stereo + depth cameras. A* path planning on probabilistic occupancy grid. PX4 integration.</p>
+        <span class="tag tag-gold">Zero GPS</span>
+        <span class="tag tag-blue">RTAB-Map</span>
+        <span class="tag tag-green">PX4</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🌍</span> GPS Outdoor Patrol</div>
+        <p>Waypoint-based autonomous patrol. Dock integration (Heisha D80 compatible). Auto-landing with ArUco markers.</p>
+        <span class="tag tag-gold">Auto-dock</span>
+        <span class="tag tag-blue">ArUco</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🛡️</span> Obstacle Avoidance</div>
+        <p>VFH+ vector field histogram, depth camera fusion, emergency stop logic with configurable safety radius.</p>
+        <span class="tag tag-green">Real-time</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🗺️</span> Frontier Exploration</div>
+        <p>Unknown environment mapping with autonomous frontier selection. SLAM-based map building during flight.</p>
+        <span class="tag tag-gold">SLAM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. FLIGHTHUB -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-icon">📊</div>
+      <div class="section-title">BBA FlightHub — Fleet Analytics SaaS</div>
+    </div>
+
+    <div class="highlight">
+      <h3>Cloud platform for drone fleet operators</h3>
+      <ul>
+        <li>ArduPilot .bin and PX4 .ulg flight log upload and parsing</li>
+        <li>AI-generated flight report — anomaly detection, recommendations, risk assessment</li>
+        <li>Motor health analysis, battery degradation curves, EKF status, vibration FFT</li>
+        <li>3D flight replay with MapLibre + Three.js visualization</li>
+        <li>Fleet management — drone registry, maintenance tracking, pilot roles</li>
+        <li>Live at <strong>www.bbaflighthub.com</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. USE CASES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div class="section-icon">🏭</div>
+      <div class="section-title">Application Domains</div>
+    </div>
+
+    <div class="use-grid">
+      <div class="use-card">
+        <h4>🛡️ Defence & Security</h4>
+        <ul>
+          <li>Perimeter surveillance with AI intrusion detection</li>
+          <li>Multi-UAV coordinated patrol</li>
+          <li>GPS-denied indoor operations</li>
+          <li>Swarm-based area coverage</li>
+          <li>Counter-UAS awareness integration</li>
+        </ul>
+      </div>
+      <div class="use-card">
+        <h4>🏗️ Infrastructure Inspection</h4>
+        <ul>
+          <li>Structural crack detection on bridges, towers</li>
+          <li>Power line and pipeline monitoring</li>
+          <li>Construction progress tracking</li>
+          <li>Change detection over time</li>
+          <li>Automated report generation</li>
+        </ul>
+      </div>
+      <div class="use-card">
+        <h4>🌊 Coastal & Maritime</h4>
+        <ul>
+          <li>Vessel detection and tracking</li>
+          <li>Beach safety (rip currents, restricted zones)</li>
+          <li>Shoreline change monitoring</li>
+          <li>Water quality anomaly detection</li>
+          <li>Search and rescue support</li>
+        </ul>
+      </div>
+      <div class="use-card">
+        <h4>🏙️ Smart City & Public Safety</h4>
+        <ul>
+          <li>Crowd monitoring and people counting</li>
+          <li>Illegal structure detection</li>
+          <li>Parking utilization analytics</li>
+          <li>Fire and smoke early warning</li>
+          <li>Road and traffic inspection</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. TECH STACK -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <div class="section-icon">⚙️</div>
+      <div class="section-title">Technical Integrations & Stack</div>
+    </div>
+
+    <p style="font-size:12px;color:#3a5a78;margin-bottom:16px;letter-spacing:.5px;text-transform:uppercase;">Autopilot & Hardware</p>
+    <div class="int-row" style="margin-bottom:20px;">
+      <div class="int-badge">ArduPilot</div>
+      <div class="int-badge">PX4</div>
+      <div class="int-badge">MAVLink v2</div>
+      <div class="int-badge">ROS2 / Humble</div>
+      <div class="int-badge">Gazebo Harmonic</div>
+      <div class="int-badge">RTAB-Map</div>
+    </div>
+
+    <p style="font-size:12px;color:#3a5a78;margin-bottom:16px;letter-spacing:.5px;text-transform:uppercase;">AI & Vision</p>
+    <div class="int-row" style="margin-bottom:20px;">
+      <div class="int-badge">YOLOv8</div>
+      <div class="int-badge">Google Gemini 2.5</div>
+      <div class="int-badge">Mistral 7B (offline)</div>
+      <div class="int-badge">OpenCV</div>
+      <div class="int-badge">PyTorch</div>
+      <div class="int-badge">ONNX Runtime</div>
+    </div>
+
+    <p style="font-size:12px;color:#3a5a78;margin-bottom:16px;letter-spacing:.5px;text-transform:uppercase;">Platform & Deployment</p>
+    <div class="int-row">
+      <div class="int-badge">Python / C++</div>
+      <div class="int-badge">React + TypeScript</div>
+      <div class="int-badge">FastAPI</div>
+      <div class="int-badge">Docker</div>
+      <div class="int-badge">Railway / Cloud</div>
+      <div class="int-badge">Edge deployable</div>
+    </div>
+  </div>
+
+  <!-- 9. DELIVERY MODEL -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <div class="section-icon">🤝</div>
+      <div class="section-title">Partnership & Delivery Models</div>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">📦</span> OEM Software License</div>
+        <p>Integrate our AI modules into your drone platform. White-label ready. Per-unit or per-fleet licensing.</p>
+        <span class="tag tag-gold">Recommended</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🔧</span> Custom Development</div>
+        <p>Tailored AI algorithms and GCS features for your specific use case. Fixed scope or retainer model.</p>
+        <span class="tag tag-blue">Project-based</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">☁️</span> SaaS / API Access</div>
+        <p>FlightHub fleet analytics via API. Vision algorithms as cloud endpoints. Per-call or subscription pricing.</p>
+        <span class="tag tag-green">Available now</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-card-title"><span class="ic">🌐</span> Joint Venture</div>
+        <p>Co-develop solutions for regional markets. We bring software depth, you bring local market access.</p>
+        <span class="tag tag-gold">Open to discuss</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-bar">
+    <div class="contact-left">
+      <h3>Let's Talk</h3>
+      <p>We respond within 24 hours. Happy to arrange a technical demo.</p>
+    </div>
+    <div class="contact-items">
+      <div class="contact-item"><span>✉️</span> serdarbatkan@bbateknoloji.com</div>
+      <div class="contact-item"><span>🌐</span> www.bbaflighthub.com</div>
+      <div class="contact-item"><span>💼</span> linkedin.com/in/serdar-batkan</div>
+      <div class="contact-item"><span>📍</span> İzmir, Türkiye</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">BBA</div>
+    <p>© 2026 BBA Teknoloji. All rights reserved. · Confidential — for recipient use only.</p>
+  </div>
+
+</div>
+</body>
+</html>
